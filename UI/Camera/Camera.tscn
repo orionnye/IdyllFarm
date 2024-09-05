@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cej6uayqdbr6a"]
+
+[ext_resource type="Script" path="res://UI/Camera/scripts/Camera.cs" id="1_30etn"]
+
+[node name="Focus" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_30etn")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 10, 2.08165e-12)
+current = true

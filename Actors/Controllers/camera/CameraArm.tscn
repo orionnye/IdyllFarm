@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://284uludaqm3y"]
+
+[ext_resource type="Script" path="res://Actors/Controllers/camera/CameraArm.cs" id="1_xjlh7"]
+[ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_k7y15"]
+[ext_resource type="Material" uid="uid://diqk0fbiavdns" path="res://Assets/Materials/Marker.tres" id="3_i0ymk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a5wlk"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dp1i4"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qp3as"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ys5h"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h14lr"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="CameraArm" type="Node3D" node_paths=PackedStringArray("ghostArm", "ghostCam", "camHost", "focus")]
+top_level = true
+script = ExtResource("1_xjlh7")
+ghostArm = NodePath("GhostArm")
+ghostCam = NodePath("CamHost/GhostCam")
+camHost = NodePath("CamHost")
+focus = NodePath("Focus")
+
+[node name="GhostArm" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_a5wlk")
+surface_material_override/0 = ExtResource("2_k7y15")
+
+[node name="ArmMarker" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dp1i4")
+surface_material_override/0 = ExtResource("3_i0ymk")
+
+[node name="Focus" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.999568, -1.35222)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Focus"]
+mesh = SubResource("BoxMesh_qp3as")
+surface_material_override/0 = ExtResource("2_k7y15")
+
+[node name="CamHost" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989664, 0.143406, 0, -0.143406, 0.989664, 0, 2.21084, 6.71476)
+
+[node name="Camera3D" type="Camera3D" parent="CamHost"]
+
+[node name="GhostCam" type="MeshInstance3D" parent="CamHost"]
+transform = Transform3D(1, 0, 0, 0, 0.989664, -0.143406, 0, 0.143406, 0.989664, 0, 0, 0)
+mesh = SubResource("BoxMesh_1ys5h")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_k7y15")
+
+[node name="CamMarker" type="MeshInstance3D" parent="CamHost"]
+mesh = SubResource("BoxMesh_h14lr")
+surface_material_override/0 = ExtResource("3_i0ymk")
