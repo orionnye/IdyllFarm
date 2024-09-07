@@ -1,0 +1,44 @@
+[gd_resource type="StandardMaterial3D" load_steps=10 format=3 uid="uid://c402h4infc2t6"]
+
+[sub_resource type="Gradient" id="Gradient_ypnw4"]
+offsets = PackedFloat32Array(0.17033, 0.760989)
+colors = PackedColorArray(0.462745, 1, 1, 0.141176, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jfcbx"]
+frequency = 0.0155
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ia4ko"]
+color_ramp = SubResource("Gradient_ypnw4")
+noise = SubResource("FastNoiseLite_jfcbx")
+
+[sub_resource type="Gradient" id="Gradient_n7i3k"]
+offsets = PackedFloat32Array(0.274725, 0.703297)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_22jb5"]
+frequency = 0.0249
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_salf6"]
+in_3d_space = true
+as_normal_map = true
+bump_strength = 18.0
+color_ramp = SubResource("Gradient_n7i3k")
+noise = SubResource("FastNoiseLite_22jb5")
+
+[sub_resource type="Gradient" id="Gradient_15t5n"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kuqui"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eodk3"]
+color_ramp = SubResource("Gradient_15t5n")
+noise = SubResource("FastNoiseLite_kuqui")
+
+[resource]
+albedo_color = Color(0.781497, 0.906952, 0.911643, 1)
+albedo_texture = SubResource("NoiseTexture2D_ia4ko")
+metallic = 0.43
+metallic_specular = 0.15
+roughness = 0.0
+roughness_texture = SubResource("NoiseTexture2D_eodk3")
+clearcoat_enabled = true
+clearcoat_roughness = 0.33
+clearcoat_texture = SubResource("NoiseTexture2D_salf6")

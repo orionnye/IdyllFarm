@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b17sybn5m6m3a"]
+[gd_scene load_steps=10 format=3 uid="uid://b17sybn5m6m3a"]
 
 [ext_resource type="Script" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_b1t85"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v42pg"]
+friction = 0.5
+absorbent = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ptjq3"]
 
@@ -21,11 +25,16 @@ emission = Color(1, 1, 0.717647, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_awv3y"]
 size = Vector3(0.3, 0.3, 0.3)
 
-[node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("trajectoryMarker")]
+[sub_resource type="BoxMesh" id="BoxMesh_h1lch"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("trajectoryMarker", "velocityMarker")]
+physics_material_override = SubResource("PhysicsMaterial_v42pg")
 script = ExtResource("1_lxdau")
-speedCap = 40
-speedGain = 20.0
+speedCap = 20
+speedGain = 10.0
 trajectoryMarker = NodePath("TrajectoryMarker")
+velocityMarker = NodePath("VelocityMarker")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ptjq3")
@@ -46,6 +55,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ri5yw")
 [node name="TrajectoryMarker" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TrajectoryMarker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_awv3y")
+surface_material_override/0 = ExtResource("2_b1t85")
+
+[node name="VelocityMarker" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VelocityMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.720181, 0)
+mesh = SubResource("BoxMesh_h1lch")
 surface_material_override/0 = ExtResource("2_b1t85")

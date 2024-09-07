@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://0p6sxxyyyk6s"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://7dhmmti8rb6n" path="res://Assets/PhysicsMaterials/Ice.tres" id="1_275ku"]
+[ext_resource type="Material" uid="uid://c402h4infc2t6" path="res://Assets/Materials/Ice.tres" id="1_ng373"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_blf4q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpuke"]
+
+[node name="IceCube" type="StaticBody3D"]
+physics_material_override = ExtResource("1_275ku")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_blf4q")
+surface_material_override/0 = ExtResource("1_ng373")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gpuke")

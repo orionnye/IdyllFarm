@@ -5,7 +5,9 @@ public partial class wasd : RigidBody3D
 {
 	[Export] public int speedCap = 15;
 	[Export] public float speedGain = 5f;
+	// public float boost = 
 	[Export] public Node3D trajectoryMarker;
+	[Export] public Node3D velocityMarker;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -32,16 +34,33 @@ public partial class wasd : RigidBody3D
 		}
 		return direction.Normalized();
 	}
-	public void updateTrajectoryMarker() {
-		Vector3 force = UserInput() * (float)speedGain;
+	public void updateInputMarker() {
+		Vector3 force = UserInput();
+		// GD.Print(force);
 		Vector3 trajectory = GlobalPosition+force;
 		// Find desired rotation and then lerp towards it(steal code from camera)
-		trajectoryMarker.GlobalPosition = trajectory;
+		trajectoryMarker.GlobalPosition = trajectoryMarker.GlobalPosition.Lerp(trajectory, 0.8f);
+	}
+	public void updateVelocityMarker() {
+		// GD.Print(force);
+		Vector3 trajectory = GlobalPosition+LinearVelocity;
+		// Find desired rotation and then lerp towards it(steal code from camera)
+		velocityMarker.GlobalPosition = velocityMarker.GlobalPosition.Lerp(trajectory, 0.8f);
+	}
+	public void updateMeshLook() {
+		Node3D mesh = (Node3D)GetNode("MeshInstance3D");
+		float diff = (mesh.Position - trajectoryMarker.Position).Length();
+		float diffMin = 0.1f;
+		if (diff > diffMin) {
+			mesh.LookAt(trajectoryMarker.GlobalPosition);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-		updateTrajectoryMarker();
+		updateInputMarker();
+		updateVelocityMarker();
+		updateMeshLook();
 	}
     public override void _IntegrateForces(PhysicsDirectBodyState3D state) {
         base._IntegrateForces(state);
