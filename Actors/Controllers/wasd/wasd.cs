@@ -5,6 +5,7 @@ public partial class wasd : RigidBody3D
 {
 	[Export] public int speedCap = 15;
 	[Export] public float speedGain = 5f;
+	[Export] public Vector3 spawnAnchor = new Vector3(0, 1, 0);
 	// public float boost = 
 	[Export] public Node3D trajectoryMarker;
 	[Export] public Node3D velocityMarker;
@@ -12,7 +13,12 @@ public partial class wasd : RigidBody3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 	}
-	public Vector3 UserInput() {
+	public void UserControls() {
+		if (Input.IsActionJustReleased("Space")) {
+			GlobalPosition = spawnAnchor;
+		}
+	}
+	public Vector3 UserWASD() {
 		Vector3 direction = new Vector3(0, 0, 0);
 		bool lockDirection = false;
 		// Mutate var if key pressed
@@ -35,7 +41,7 @@ public partial class wasd : RigidBody3D
 		return direction.Normalized();
 	}
 	public void updateInputMarker() {
-		Vector3 force = UserInput();
+		Vector3 force = UserWASD();
 		// GD.Print(force);
 		Vector3 trajectory = GlobalPosition+force;
 		// Find desired rotation and then lerp towards it(steal code from camera)
@@ -58,6 +64,7 @@ public partial class wasd : RigidBody3D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
+		UserControls();
 		updateInputMarker();
 		updateVelocityMarker();
 		updateMeshLook();
@@ -71,7 +78,7 @@ public partial class wasd : RigidBody3D
 		// Max out the speed or speed gain depending on current velocity
 
 		// Find the current speed and then compare it to the desired max speed
-		Vector3 force = UserInput() * (float)speedGain;
+		Vector3 force = UserWASD() * (float)speedGain;
 		if (LinearVelocity.Length() <= speedCap) {
 			ApplyCentralForce(force);
 		}

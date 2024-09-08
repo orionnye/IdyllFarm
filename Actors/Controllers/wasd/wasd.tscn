@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b17sybn5m6m3a"]
+[gd_scene load_steps=11 format=3 uid="uid://b17sybn5m6m3a"]
 
 [ext_resource type="Script" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_b1t85"]
@@ -11,6 +11,11 @@ absorbent = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_1jbb1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7aaq"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.452586, 0.452586, 0.452586, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_wvprd"]
 top_radius = 0.2
 bottom_radius = 0.2
@@ -18,6 +23,7 @@ height = 0.5
 radial_segments = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri5yw"]
+diffuse_mode = 3
 albedo_color = Color(1, 0.847059, 0, 1)
 emission_enabled = true
 emission = Color(1, 1, 0.717647, 1)
@@ -41,6 +47,7 @@ shape = SubResource("SphereShape3D_ptjq3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_1jbb1")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7aaq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.204124, 0.193186, -0.239866)

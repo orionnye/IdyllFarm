@@ -1,6 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://d1yvkic5i2utj"]
 
 [resource]
+no_depth_test = true
+diffuse_mode = 3
 albedo_color = Color(1, 1, 0, 0.545098)
 emission_enabled = true
 emission = Color(0.929846, 0.929846, 0, 1)
