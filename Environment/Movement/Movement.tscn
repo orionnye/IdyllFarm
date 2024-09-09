@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwpne6caurrrd"]
+[gd_scene load_steps=24 format=3 uid="uid://dwpne6caurrrd"]
 
 [ext_resource type="Material" uid="uid://bc8jf5ofqnb8y" path="res://Assets/Materials/Grabble.tres" id="1_y5nhv"]
 [ext_resource type="PackedScene" uid="uid://08sinnlkteef" path="res://Environment/Static/Primary/Cube.tscn" id="2_4yy5l"]
@@ -26,9 +26,9 @@ sky = SubResource("Sky_4ywum")
 sdfgi_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5cd0w"]
-friction = 0.6
+friction = 0.5
 rough = true
-bounce = 0.3
+bounce = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_s0tsb"]
 size = Vector3(40, 0.1, 40)
@@ -36,33 +36,79 @@ size = Vector3(40, 0.1, 40)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2hmt"]
 size = Vector3(40, 0.1, 40)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m7esc"]
+friction = 0.6
+bounce = 2.0
+
+[sub_resource type="Gradient" id="Gradient_q5n3b"]
+offsets = PackedFloat32Array(0.135246, 0.811475)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_627s1"]
+frequency = 0.0013
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_srudd"]
+color_ramp = SubResource("Gradient_q5n3b")
+noise = SubResource("FastNoiseLite_627s1")
+
+[sub_resource type="Gradient" id="Gradient_a2rmn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rqweo"]
+noise_type = 2
+frequency = 0.0052
+offset = Vector3(-38.3, 152.17, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5fmye"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_a2rmn")
+noise = SubResource("FastNoiseLite_rqweo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8s04"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.286053, 0.0664598, 0.0119655, 1)
+albedo_texture = SubResource("NoiseTexture2D_srudd")
+normal_scale = -11.94
+heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_5fmye")
+
 [node name="Movement" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ilc6t")
 
-[node name="Plane" type="StaticBody3D" parent="."]
+[node name="GrassPlane" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_5cd0w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GrassPlane"]
 mesh = SubResource("BoxMesh_s0tsb")
 surface_material_override/0 = ExtResource("1_y5nhv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassPlane"]
 shape = SubResource("BoxShape3D_a2hmt")
 
-[node name="Plane2" type="StaticBody3D" parent="."]
+[node name="MudPlane" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_m7esc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MudPlane"]
+mesh = SubResource("BoxMesh_s0tsb")
+surface_material_override/0 = SubResource("StandardMaterial3D_r8s04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MudPlane"]
+shape = SubResource("BoxShape3D_a2hmt")
+
+[node name="IcePlane" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 physics_material_override = ExtResource("2_mn4to")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IcePlane"]
 mesh = SubResource("BoxMesh_s0tsb")
 surface_material_override/0 = ExtResource("2_v4774")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IcePlane"]
 shape = SubResource("BoxShape3D_a2hmt")
 
-[node name="Cube" parent="Plane2" instance=ExtResource("2_hy6jo")]
+[node name="Cube" parent="IcePlane" instance=ExtResource("2_hy6jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98764, 4.79593, -2.04779)
 
 [node name="Environment" type="Node3D" parent="."]
@@ -168,7 +214,16 @@ transform = Transform3D(0.999874, 0, -0.0158644, 0, 1, 0, 0.0158644, 0, 0.999874
 transform = Transform3D(0.396399, 0.076566, 0.220466, 0.0817139, 0.361502, -0.272468, -0.218611, 0.273959, 0.297919, 20.394, 3.87743, -2.30713)
 
 [node name="IceCube" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
-transform = Transform3D(24.0563, -2.94578, -9.16205, -5.64247, 15.6651, -19.8518, 7.79638, 20.4268, 13.9029, 27.304, -8.844, -10.0981)
+transform = Transform3D(23.8345, -3.36784, -6.75093, -4.48254, 11.6722, -21.6487, 6.0683, 21.8499, 10.5242, 29.0178, -8.51295, -9.14491)
+
+[node name="IceCube2" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
+transform = Transform3D(22.0891, -1.44239, -11.6185, -6.33087, 19.3978, -14.4445, 9.8483, 15.7049, 16.774, 16.4609, -9.98704, 5.77248)
+
+[node name="IceCube3" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
+transform = Transform3D(22.95, -9.16465, 3.78252, 4.4696, 1.04996, -24.5748, 8.84992, 23.2359, 2.60235, 60.395, -13.2645, 11.3732)
+
+[node name="IceCube4" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
+transform = Transform3D(23.6196, 1.32445, -8.08458, -8.17394, 5.46287, -22.9857, 0.548863, 24.3599, 5.59427, 48.3365, -14.4157, -0.633669)
 
 [node name="IceCube6" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
 transform = Transform3D(-19.8319, -19.8319, -0.444999, -19.8343, 19.8343, 0, 0.314662, 0.314662, -28.0465, 86.6494, -4.78254, 9.0615)

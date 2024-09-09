@@ -5,7 +5,8 @@ public partial class wasd : RigidBody3D
 {
 	[Export] public int speedCap = 15;
 	[Export] public float speedGain = 5f;
-	[Export] public Vector3 spawnAnchor = new Vector3(0, 1, 0);
+	[Export] public Node3D spawnAnchor;
+	[Export] public Vector3 spawnPoint = new Vector3(0, 1, 0);
 	// public float boost = 
 	[Export] public Node3D trajectoryMarker;
 	[Export] public Node3D velocityMarker;
@@ -14,8 +15,16 @@ public partial class wasd : RigidBody3D
 	public override void _Ready() {
 	}
 	public void UserControls() {
+		Vector3 yBump = new Vector3(0, 0.1f, 0);
 		if (Input.IsActionJustReleased("Space")) {
-			GlobalPosition = spawnAnchor;
+			GlobalPosition = spawnAnchor.GlobalPosition + yBump;
+			// Teleport
+			// GD.Print("respawn");
+		}
+		if (Input.IsActionJustReleased("r")) {
+			spawnAnchor.GlobalPosition = GlobalPosition;
+			// Reset teleport
+			// GD.Print("reset spawn");
 		}
 	}
 	public Vector3 UserWASD() {
@@ -40,6 +49,11 @@ public partial class wasd : RigidBody3D
 		}
 		return direction.Normalized();
 	}
+	public void checkBounds() {
+		if (GlobalPosition.Y <= -2) {
+			GlobalPosition = spawnPoint;
+		}
+	}
 	public void updateInputMarker() {
 		Vector3 force = UserWASD();
 		// GD.Print(force);
@@ -48,6 +62,12 @@ public partial class wasd : RigidBody3D
 		trajectoryMarker.GlobalPosition = trajectoryMarker.GlobalPosition.Lerp(trajectory, 0.8f);
 	}
 	public void updateVelocityMarker() {
+		// GD.Print(force);
+		Vector3 trajectory = GlobalPosition+LinearVelocity;
+		// Find desired rotation and then lerp towards it(steal code from camera)
+		velocityMarker.GlobalPosition = velocityMarker.GlobalPosition.Lerp(trajectory, 0.8f);
+	}
+	public void updateSpawnAnchor() {
 		// GD.Print(force);
 		Vector3 trajectory = GlobalPosition+LinearVelocity;
 		// Find desired rotation and then lerp towards it(steal code from camera)
@@ -64,6 +84,7 @@ public partial class wasd : RigidBody3D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
+		checkBounds();
 		UserControls();
 		updateInputMarker();
 		updateVelocityMarker();

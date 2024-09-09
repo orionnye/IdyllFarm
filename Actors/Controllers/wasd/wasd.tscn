@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b17sybn5m6m3a"]
+[gd_scene load_steps=13 format=3 uid="uid://b17sybn5m6m3a"]
 
 [ext_resource type="Script" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
+[ext_resource type="PackedScene" uid="uid://cur88scnr5imy" path="res://Environment/Particles/Particles.tscn" id="2_6am86"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_b1t85"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v42pg"]
@@ -34,11 +35,15 @@ size = Vector3(0.3, 0.3, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_h1lch"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("trajectoryMarker", "velocityMarker")]
+[sub_resource type="BoxMesh" id="BoxMesh_ihcka"]
+material = ExtResource("2_b1t85")
+
+[node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "trajectoryMarker", "velocityMarker")]
 physics_material_override = SubResource("PhysicsMaterial_v42pg")
 script = ExtResource("1_lxdau")
 speedCap = 20
 speedGain = 10.0
+spawnAnchor = NodePath("SpawnAnchor")
 trajectoryMarker = NodePath("TrajectoryMarker")
 velocityMarker = NodePath("VelocityMarker")
 
@@ -72,3 +77,13 @@ surface_material_override/0 = ExtResource("2_b1t85")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.720181, 0)
 mesh = SubResource("BoxMesh_h1lch")
 surface_material_override/0 = ExtResource("2_b1t85")
+
+[node name="SpawnAnchor" type="Node3D" parent="."]
+top_level = true
+
+[node name="Particles" parent="SpawnAnchor" instance=ExtResource("2_6am86")]
+physics_interpolation_mode = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnAnchor"]
+visible = false
+mesh = SubResource("BoxMesh_ihcka")

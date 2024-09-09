@@ -7,3 +7,4 @@ res://Actors/Controllers/camera/CameraArm.cs
 res://Actors/Controllers/mouse/Mouse.cs
 res://Actors/Controllers/wasd/wasd.cs
 res://UI/Camera/scripts/Camera.cs
+res://Environment/Particles/Particles.tscn

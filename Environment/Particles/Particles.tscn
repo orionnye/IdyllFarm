@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://cur88scnr5imy"]
+
+[ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="1_yru62"]
+
+[sub_resource type="Curve" id="Curve_aa2us"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u5482"]
+curve = SubResource("Curve_aa2us")
+
+[sub_resource type="Curve" id="Curve_3inkm"]
+
+[sub_resource type="Curve" id="Curve_ys2wn"]
+
+[sub_resource type="Curve" id="Curve_cosue"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_5coj4"]
+curve_x = SubResource("Curve_3inkm")
+curve_y = SubResource("Curve_ys2wn")
+curve_z = SubResource("Curve_cosue")
+
+[sub_resource type="Curve" id="Curve_j10ig"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0.345324, -1.36), 0.0, 0.0, 0, 0, Vector2(0.870504, -0.848), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p8krn"]
+width = 64
+curve = SubResource("Curve_j10ig")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6mh6m"]
+lifetime_randomness = 1.0
+emission_shape_offset = Vector3(-0.25, -0.25, -0.25)
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = -682.7
+angle_curve = SubResource("CurveTexture_u5482")
+spread = 16.807
+initial_velocity_min = 0.01
+initial_velocity_max = 2.89
+directional_velocity_min = -525.52
+directional_velocity_max = 20.69
+directional_velocity_curve = SubResource("CurveXYZTexture_5coj4")
+orbit_velocity_min = -0.136
+orbit_velocity_max = 0.0430001
+orbit_velocity_curve = SubResource("CurveTexture_p8krn")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_over_velocity_max = 34.48
+
+[sub_resource type="BoxMesh" id="BoxMesh_en8kw"]
+material = ExtResource("1_yru62")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Particles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+physics_interpolation_mode = 2
+amount = 32
+speed_scale = 1.97
+randomness = 0.19
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+process_material = SubResource("ParticleProcessMaterial_6mh6m")
+draw_passes = 2
+draw_pass_1 = SubResource("BoxMesh_en8kw")
+draw_pass_2 = null
