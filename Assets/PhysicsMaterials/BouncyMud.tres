@@ -1,0 +1,6 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://hbgvsi3yw404"]
+
+[resource]
+friction = 0.8
+rough = true
+bounce = 2.0

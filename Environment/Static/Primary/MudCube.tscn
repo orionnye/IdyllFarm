@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://brjp8e1q8d4w6"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://hbgvsi3yw404" path="res://Assets/PhysicsMaterials/BouncyMud.tres" id="1_pko7y"]
+[ext_resource type="Material" uid="uid://dko7ndjjouvgr" path="res://Assets/Materials/Mud.tres" id="2_178c4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_blf4q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpuke"]
+
+[node name="Cube" type="StaticBody3D"]
+physics_material_override = ExtResource("1_pko7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_blf4q")
+surface_material_override/0 = ExtResource("2_178c4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gpuke")

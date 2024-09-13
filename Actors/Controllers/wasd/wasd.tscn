@@ -83,6 +83,7 @@ top_level = true
 
 [node name="Particles" parent="SpawnAnchor" instance=ExtResource("2_6am86")]
 physics_interpolation_mode = 2
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnAnchor"]
 visible = false
