@@ -1,3 +1,9 @@
+DirectionalLight3D
+OmniLight3D
 MeshInstance3D
+CollisionShape3D
+StaticBody3D
 Node3D
+Area3D
+RigidBody3D
 GPUParticles3D

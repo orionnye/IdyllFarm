@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba7yipgdtkduq"]
+
+[ext_resource type="Script" path="res://Actors/Items/OneShot/OneShot.cs" id="1_viv81"]
+
+[node name="OneShot" type="Node3D"]
+script = ExtResource("1_viv81")

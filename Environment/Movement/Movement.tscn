@@ -79,7 +79,7 @@ transform = Transform3D(9.91324, 1.31443, 0, -1.31443, 9.91324, 0, 0, 0, 10, -35
 transform = Transform3D(9.90498, -1.37531, 0, 1.37531, 9.90498, 0, 0, 0, 10, -55.7434, 21.843, -14.3765)
 
 [node name="Cube9" parent="." instance=ExtResource("2_fo6yv")]
-transform = Transform3D(9.91324, 1.31443, 0, -1.31443, 9.91324, 0, 0, 0, 10, -33.6863, 22.7551, -14.3765)
+transform = Transform3D(9.91324, 1.31443, 0, -1.31443, 9.91324, 0, 0, 0, 10, -33.6863, 21.4249, -14.3765)
 
 [node name="MudPlane" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
@@ -104,7 +104,16 @@ surface_material_override/0 = ExtResource("2_v4774")
 shape = SubResource("BoxShape3D_a2hmt")
 
 [node name="Cube" parent="IcePlane" instance=ExtResource("2_hy6jo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98764, 4.79593, -2.04779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49026, 11.2871, -16.9421)
+
+[node name="Cube4" parent="IcePlane" instance=ExtResource("2_hy6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48855, 13.1782, -16.4522)
+
+[node name="Cube2" parent="IcePlane" instance=ExtResource("2_hy6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35916, 12.2364, -15.3721)
+
+[node name="Cube3" parent="IcePlane" instance=ExtResource("2_hy6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61064, 11.2871, -16.9421)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -209,13 +218,19 @@ transform = Transform3D(0.999874, 0, -0.0158644, 0, 1, 0, 0.0158644, 0, 0.999874
 transform = Transform3D(0.396399, 0.076566, 0.220466, 0.0817139, 0.361502, -0.272468, -0.218611, 0.273959, 0.297919, 20.394, 3.87743, -2.30713)
 
 [node name="IceCube" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
-transform = Transform3D(23.8345, -3.36784, -6.75093, -4.48254, 11.6722, -21.6487, 6.0683, 21.8499, 10.5242, 29.0178, -8.51295, -9.14491)
+transform = Transform3D(21.9773, -3.68623, -11.3319, -7.4661, 14.2695, -19.1217, 9.2875, 20.1939, 11.4433, 31.6532, -2.48919, -7.47362)
 
 [node name="IceCube2" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
-transform = Transform3D(22.0891, -1.44239, -11.6185, -6.33087, 19.3978, -14.4445, 9.8483, 15.7049, 16.774, 16.4609, -9.98704, 5.77248)
+transform = Transform3D(22.0891, -1.44241, -11.6185, -6.33088, 19.3978, -14.4445, 9.84832, 15.7049, 16.774, 16.4609, -9.98704, 5.77248)
+
+[node name="IceCube5" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
+transform = Transform3D(26.0436, 10.1245, -10.9189, -14.7236, 20.7945, -15.8368, 2.22381, 19.1071, 23.0211, 36.9668, 30.213, 53.0093)
+
+[node name="IceCube15" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
+transform = Transform3D(22.0883, -13.1919, -15.4299, -0.205705, 22.6558, -19.664, 20.2994, 14.584, 16.5904, 1.97471, 35.1749, 49.0984)
 
 [node name="IceCube3" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
-transform = Transform3D(22.95, -9.16465, 3.78252, 4.4696, 1.04996, -24.5748, 8.84992, 23.2359, 2.60235, 60.395, -13.2645, 11.3732)
+transform = Transform3D(22.8888, -8.84288, 4.78631, 4.74894, -0.982438, -24.5251, 8.86301, 23.3632, 0.780293, 60.395, -13.2645, 11.3732)
 
 [node name="IceCube4" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
 transform = Transform3D(23.6196, 1.32445, -8.08458, -8.17394, 5.46287, -22.9857, 0.548863, 24.3599, 5.59427, 48.3365, -14.4157, -0.633669)

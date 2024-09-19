@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcxr77c7xpun5"]
+
+[ext_resource type="Script" path="res://Actors/Controllers/Hands/Hands.cs" id="1_koanj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u3ffa"]
+margin = 0.05
+radius = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_naly2"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Hands" type="Area3D" node_paths=PackedStringArray("grabber")]
+script = ExtResource("1_koanj")
+grabber = NodePath("Grabber")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_u3ffa")
+
+[node name="HandMesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HandMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.696368)
+mesh = SubResource("BoxMesh_naly2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HandMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.667851)
+mesh = SubResource("BoxMesh_naly2")
+skeleton = NodePath("../..")
+
+[node name="Grabber" type="Node3D" parent="."]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsde32hucbowo"]
+
+[ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="1_a5r0s"]
+[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="1_d61is"]
+[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="2_1g15h"]
+[ext_resource type="PackedScene" uid="uid://c0o8d02va0qbn" path="res://Actors/Items/Default/Default.tscn" id="4_mdbub"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fc6xb"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bsl4d"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_ecwa6"]
+offsets = PackedFloat32Array(0, 0.467213, 0.967213, 1)
+colors = PackedColorArray(1, 0, 0, 0.0431373, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ck55c"]
+noise_type = 2
+frequency = 0.9303
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tot6k"]
+width = 16
+height = 16
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_ecwa6")
+noise = SubResource("FastNoiseLite_ck55c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utuho"]
+albedo_color = Color(0.396889, 0.396889, 0.396889, 1)
+albedo_texture = SubResource("NoiseTexture2D_tot6k")
+
+[node name="ItemTest" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fc6xb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_bsl4d")
+surface_material_override/0 = SubResource("StandardMaterial3D_utuho")
+
+[node name="Wasd" parent="." instance=ExtResource("1_d61is")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09229, 0)
+
+[node name="Hands" parent="Wasd" instance=ExtResource("1_a5r0s")]
+transform = Transform3D(-0.0427998, 0, 0.999084, 0, 1, 0, -0.999084, 0, -0.0427998, 0, 0, -1.13219)
+
+[node name="Focus" parent="Wasd" instance=ExtResource("2_1g15h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11394, 1.78452, 0.0709238)
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.785349, 0.619053, 0, -0.619053, 0.785349, -6.55715, 3.18436, -3.27449)
+
+[node name="Default" parent="." instance=ExtResource("4_mdbub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94299, 1.08654, -0.653563)

@@ -39,6 +39,9 @@ size = Vector3(0.1, 0.1, 0.1)
 material = ExtResource("2_b1t85")
 
 [node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "trajectoryMarker", "velocityMarker")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_v42pg")
 script = ExtResource("1_lxdau")
 speedCap = 20
@@ -83,7 +86,6 @@ top_level = true
 
 [node name="Particles" parent="SpawnAnchor" instance=ExtResource("2_6am86")]
 physics_interpolation_mode = 2
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnAnchor"]
 visible = false

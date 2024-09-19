@@ -7,6 +7,7 @@ public partial class wasd : RigidBody3D
 	[Export] public float speedGain = 5f;
 	[Export] public Node3D spawnAnchor;
 	[Export] public Vector3 spawnPoint = new Vector3(0, 1, 0);
+	[Export] public bool spawnControl = false;
 	// public float boost = 
 	[Export] public Node3D trajectoryMarker;
 	[Export] public Node3D velocityMarker;
@@ -17,7 +18,9 @@ public partial class wasd : RigidBody3D
 	public void UserControls() {
 		Vector3 yBump = new Vector3(0, 0.1f, 0);
 		if (Input.IsActionJustReleased("Space")) {
-			GlobalPosition = spawnAnchor.GlobalPosition + yBump;
+			if (spawnControl) {
+				GlobalPosition = spawnAnchor.GlobalPosition + yBump;
+			}
 			// Teleport
 			// GD.Print("respawn");
 		}

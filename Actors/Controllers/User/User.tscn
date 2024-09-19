@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://3m52ixqp6hgn"]
+
+[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="1_cgv5p"]
+[ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="2_jaxxf"]
+
+[node name="User" type="Node3D"]
+
+[node name="Wasd" parent="." instance=ExtResource("1_cgv5p")]
+
+[node name="Hands" parent="." instance=ExtResource("2_jaxxf")]
+transform = Transform3D(-0.00651002, 0, -0.999979, 0, 1, 0, 0.999979, 0, -0.00651002, 0, 0, -0.590583)
