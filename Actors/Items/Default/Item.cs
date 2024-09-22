@@ -13,15 +13,16 @@ public partial class Item : Node3D
 	// UI
 	// [Export] public NodeTracker UIMarker;
 
-	public StandardMaterial3D activeMaterial = new StandardMaterial3D{
-		AlbedoColor = new Color(1f, 0f, 0f)
-	};
-	public StandardMaterial3D inactiveMaterial = new StandardMaterial3D{
-		AlbedoColor = new Color(1f, 1f, 1f)
-	};
+	public StandardMaterial3D activeMaterial;
+	public StandardMaterial3D inactiveMaterial;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		
+		activeMaterial = new StandardMaterial3D{
+			AlbedoColor = new Color(1f, 0f, 0f)
+		};
+		inactiveMaterial = new StandardMaterial3D{
+			AlbedoColor = new Color(1f, 1f, 1f)
+		};
 	}
 	
 	// Base Activate function

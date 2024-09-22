@@ -49,7 +49,7 @@ public partial class Hands : Node3D
 	}
 	// Drop Object Held in hands
 	public void Drop() {
-		GD.Print("Trying to drop");
+		// GD.Print("Trying to drop");
 		if (isHolding()) {
 			Node3D item = (Node3D)grabber.GetChild(0);
 			item.Set("freeze", false);
@@ -77,13 +77,13 @@ public partial class Hands : Node3D
 			Use((Item)grabber.GetChild(0));
 		}
 		if (Input.IsActionJustReleased("Shift")) {
-			GD.Print("isHolding: ", isHolding());
+			// GD.Print("isHolding: ", isHolding());
 			if (isHolding()) {
-				GD.Print("trying to drop");
+				// GD.Print("trying to drop");
 				Drop();
 			} else {
 				if (target != null) {
-					GD.Print("trying to grab");
+					// GD.Print("trying to grab");
 					Grab(target);
 				}
 				// Restructure this design to return the object closest and add a UI element in the viewport over it

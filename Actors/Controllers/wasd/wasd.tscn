@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b17sybn5m6m3a"]
+[gd_scene load_steps=12 format=3 uid="uid://b17sybn5m6m3a"]
 
 [ext_resource type="Script" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
+[ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_r83al"]
 [ext_resource type="PackedScene" uid="uid://cur88scnr5imy" path="res://Environment/Particles/Particles.tscn" id="2_6am86"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_b1t85"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v42pg"]
-friction = 0.5
-absorbent = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ptjq3"]
 
@@ -35,14 +32,11 @@ size = Vector3(0.3, 0.3, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_h1lch"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ihcka"]
-material = ExtResource("2_b1t85")
-
 [node name="Wasd" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "trajectoryMarker", "velocityMarker")]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-physics_material_override = SubResource("PhysicsMaterial_v42pg")
+physics_material_override = ExtResource("1_r83al")
 script = ExtResource("1_lxdau")
 speedCap = 20
 speedGain = 10.0
@@ -83,10 +77,7 @@ surface_material_override/0 = ExtResource("2_b1t85")
 
 [node name="SpawnAnchor" type="Node3D" parent="."]
 top_level = true
+visible = false
 
 [node name="Particles" parent="SpawnAnchor" instance=ExtResource("2_6am86")]
 physics_interpolation_mode = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnAnchor"]
-visible = false
-mesh = SubResource("BoxMesh_ihcka")

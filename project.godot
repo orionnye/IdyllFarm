@@ -18,6 +18,20 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Farm"
 
+[file_customization]
+
+folder_colors={
+"res://Actors/": "red",
+"res://Actors/Items/": "purple",
+"res://Assets/": "blue",
+"res://Assets/Materials/": "purple",
+"res://Environment/": "green",
+"res://Environment/Particles/": "yellow",
+"res://Environment/Rigid/": "gray",
+"res://Environment/Static/": "gray",
+"res://UI/": "yellow"
+}
+
 [global_group]
 
 Item="A usable item"

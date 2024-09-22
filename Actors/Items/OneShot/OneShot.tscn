@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba7yipgdtkduq"]
+[gd_scene load_steps=4 format=3 uid="uid://ba7yipgdtkduq"]
 
 [ext_resource type="Script" path="res://Actors/Items/OneShot/OneShot.cs" id="1_viv81"]
 
-[node name="OneShot" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yolnk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jqwhy"]
+
+[node name="OneShot" type="RigidBody3D" groups=["Item"]]
 script = ExtResource("1_viv81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yolnk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jqwhy")

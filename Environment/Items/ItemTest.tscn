@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bsde32hucbowo"]
 
-[ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="1_a5r0s"]
-[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="1_d61is"]
-[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="2_1g15h"]
+[ext_resource type="PackedScene" uid="uid://dhnolivqlhywo" path="res://Actors/Items/Flashlight/Flashlight.tscn" id="4_5fuxs"]
 [ext_resource type="PackedScene" uid="uid://c0o8d02va0qbn" path="res://Actors/Items/Default/Default.tscn" id="4_mdbub"]
+[ext_resource type="PackedScene" uid="uid://3m52ixqp6hgn" path="res://Actors/Controllers/User/User.tscn" id="4_rnpor"]
+[ext_resource type="PackedScene" uid="uid://ba7yipgdtkduq" path="res://Actors/Items/OneShot/OneShot.tscn" id="5_kalmm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fc6xb"]
 size = Vector3(10, 0.1, 10)
@@ -12,18 +12,22 @@ size = Vector3(10, 0.1, 10)
 size = Vector2(10, 10)
 
 [sub_resource type="Gradient" id="Gradient_ecwa6"]
-offsets = PackedFloat32Array(0, 0.467213, 0.967213, 1)
-colors = PackedColorArray(1, 0, 0, 0.0431373, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1)
+offsets = PackedFloat32Array(0.5, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ck55c"]
 noise_type = 2
-frequency = 0.9303
+frequency = 0.0083
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tot6k"]
 width = 16
 height = 16
+invert = true
 in_3d_space = true
 seamless = true
+seamless_blend_skirt = 0.318
 color_ramp = SubResource("Gradient_ecwa6")
 noise = SubResource("FastNoiseLite_ck55c")
 
@@ -43,17 +47,18 @@ shape = SubResource("BoxShape3D_fc6xb")
 mesh = SubResource("PlaneMesh_bsl4d")
 surface_material_override/0 = SubResource("StandardMaterial3D_utuho")
 
-[node name="Wasd" parent="." instance=ExtResource("1_d61is")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09229, 0)
-
-[node name="Hands" parent="Wasd" instance=ExtResource("1_a5r0s")]
-transform = Transform3D(-0.0427998, 0, 0.999084, 0, 1, 0, -0.999084, 0, -0.0427998, 0, 0, -1.13219)
-
-[node name="Focus" parent="Wasd" instance=ExtResource("2_1g15h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11394, 1.78452, 0.0709238)
+[node name="User" parent="." instance=ExtResource("4_rnpor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.640828, 0)
 
 [node name="OmniLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.785349, 0.619053, 0, -0.619053, 0.785349, -6.55715, 3.18436, -3.27449)
+visible = false
 
 [node name="Default" parent="." instance=ExtResource("4_mdbub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94299, 1.08654, -0.653563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94299, 1.08654, -6.56298)
+
+[node name="OneShot" parent="." instance=ExtResource("5_kalmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.986, 2.28131, -8.20333)
+
+[node name="Flashlight" parent="." instance=ExtResource("4_5fuxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57728, 1.13299, -6.30669)

@@ -1,11 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://3m52ixqp6hgn"]
+[gd_scene load_steps=13 format=3 uid="uid://3m52ixqp6hgn"]
 
-[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="1_cgv5p"]
+[ext_resource type="Script" path="res://Actors/Controllers/User/User.cs" id="1_elnjs"]
+[ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_gisbw"]
 [ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="2_jaxxf"]
+[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="2_s672s"]
+[ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="3_j7w1j"]
+[ext_resource type="PackedScene" uid="uid://cur88scnr5imy" path="res://Environment/Particles/Particles.tscn" id="5_mt847"]
+[ext_resource type="Material" uid="uid://diqk0fbiavdns" path="res://Assets/Materials/Marker.tres" id="5_tnj4n"]
 
-[node name="User" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_8muqs"]
 
-[node name="Wasd" parent="." instance=ExtResource("1_cgv5p")]
+[sub_resource type="SphereMesh" id="SphereMesh_7qq0c"]
 
-[node name="Hands" parent="." instance=ExtResource("2_jaxxf")]
-transform = Transform3D(-0.00651002, 0, -0.999979, 0, 1, 0, 0.999979, 0, -0.00651002, 0, 0, -0.590583)
+[sub_resource type="BoxMesh" id="BoxMesh_i64fo"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q46u1"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o2ap6"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="User" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "inputMarker", "velocityMarker")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("1_gisbw")
+script = ExtResource("1_elnjs")
+speedCap = 20
+speedGain = 10.0
+spawnAnchor = NodePath("Particles")
+inputMarker = NodePath("InputMarker")
+velocityMarker = NodePath("VelocityMarker")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8muqs")
+
+[node name="Focus" parent="." instance=ExtResource("2_s672s")]
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Meshes"]
+mesh = SubResource("SphereMesh_7qq0c")
+skeleton = NodePath("../..")
+
+[node name="Eye" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233781, 0.0842038, -0.357503)
+mesh = SubResource("BoxMesh_i64fo")
+surface_material_override/0 = ExtResource("3_j7w1j")
+
+[node name="Eye2" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217489, 0.0842038, -0.357503)
+mesh = SubResource("BoxMesh_i64fo")
+surface_material_override/0 = ExtResource("3_j7w1j")
+
+[node name="Hands" parent="Meshes" instance=ExtResource("2_jaxxf")]
+transform = Transform3D(-0.00651002, 0, -0.999979, 0, 1, 0, 0.999979, 0, -0.00651002, 0, 0, -1.05839)
+
+[node name="Particles" parent="." instance=ExtResource("5_mt847")]
+top_level = true
+
+[node name="InputMarker" type="Node3D" parent="."]
+
+[node name="InputMarker" type="MeshInstance3D" parent="InputMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902443, 0)
+mesh = SubResource("BoxMesh_q46u1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_tnj4n")
+
+[node name="VelocityMarker" type="Node3D" parent="."]
+
+[node name="VelocityMarker" type="MeshInstance3D" parent="VelocityMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64898, 0)
+mesh = SubResource("BoxMesh_o2ap6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_tnj4n")

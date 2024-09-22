@@ -266,9 +266,6 @@ transform = Transform3D(0.314659, 0.314659, -28.0465, -19.8343, 19.8343, 0, 19.8
 
 [node name="Wasd" parent="." instance=ExtResource("3_26ugn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99046, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 
 [node name="Focus" parent="Wasd" instance=ExtResource("4_xv7x6")]
 
