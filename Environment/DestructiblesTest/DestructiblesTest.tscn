@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq65q7rcy2lf5"]
+
+[ext_resource type="PackedScene" uid="uid://3m52ixqp6hgn" path="res://Actors/Controllers/User/User.tscn" id="1_0ab7m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2fd4"]
+size = Vector3(40, 0.1, 40)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dex7"]
+size = Vector2(40, 40)
+
+[sub_resource type="Gradient" id="Gradient_orxhv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_an6l1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cbriu"]
+width = 64
+height = 64
+invert = true
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_orxhv")
+noise = SubResource("FastNoiseLite_an6l1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxes4"]
+albedo_color = Color(0.945098, 0.584314, 0.270588, 1)
+albedo_texture = SubResource("NoiseTexture2D_cbriu")
+
+[node name="DestructiblesTest" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_g2fd4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_4dex7")
+surface_material_override/0 = SubResource("StandardMaterial3D_mxes4")
+
+[node name="User" parent="." instance=ExtResource("1_0ab7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6389, 0)

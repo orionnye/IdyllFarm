@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc8jvih147yts"]
+
+[ext_resource type="Script" path="res://Actors/Items/Spawners/WateringCan/WateringCan.cs" id="1_2y625"]
+[ext_resource type="PackedScene" uid="uid://twnn0mcpf3f2" path="res://Actors/Items/Projectiles/Water/Water.tscn" id="2_cliyv"]
+[ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_e2dp7"]
+[ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="2_njo1d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c5ftv"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kir0y"]
+top_radius = 0.6
+bottom_radius = 0.4
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_enujq"]
+size = Vector3(0.1, 0.1, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdm20"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="WateringCan" type="RigidBody3D" node_paths=PackedStringArray("spawnNode") groups=["Item"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_2y625")
+bulletCount = 10
+force = 1.0
+noise = 1.5
+cooldown = 0.5
+spawnNode = NodePath("SpawnNode")
+item = ExtResource("2_cliyv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_c5ftv")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0212413, 0)
+mesh = SubResource("CylinderMesh_kir0y")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_njo1d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 0.927243, -0.374461, 0, 0.374461, 0.927243, 0, 0.312527, -0.625026)
+mesh = SubResource("BoxMesh_enujq")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 0.938149, -0.346232, 0, 0.346232, 0.938149, 0, 0.300975, 0.690183)
+mesh = SubResource("BoxMesh_enujq")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, -0.0563269, 0.998412, 0, -0.998412, -0.0563269, 0, 0.0295043, 0.838854)
+mesh = SubResource("BoxMesh_enujq")
+skeleton = NodePath("../..")
+
+[node name="SpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335007, -0.825965)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnNode"]
+mesh = SubResource("BoxMesh_cdm20")
+surface_material_override/0 = ExtResource("2_e2dp7")

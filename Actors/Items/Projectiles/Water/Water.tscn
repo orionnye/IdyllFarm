@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://twnn0mcpf3f2"]
+
+[ext_resource type="Material" uid="uid://b3uf8p56g3o5e" path="res://Assets/Materials/waterDrop.tres" id="1_cirh7"]
+[ext_resource type="Script" path="res://Actors/Items/Projectiles/Water/Water.cs" id="1_ukdv3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e2x84"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ss4a"]
+radius = 0.1
+height = 0.2
+
+[node name="Water" type="RigidBody3D"]
+script = ExtResource("1_ukdv3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_e2x84")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3ss4a")
+surface_material_override/0 = ExtResource("1_cirh7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

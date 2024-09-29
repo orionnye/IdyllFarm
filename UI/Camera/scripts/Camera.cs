@@ -3,14 +3,17 @@ using System;
 
 public partial class Camera : Node3D
 {
-	public Vector3 fixedPos;
-	public Vector3 fixedRot;
+	[Export] public Vector3 fixedPos;
+	[Export] public Vector3 fixedRot;
 	[Export] Camera3D camera;
+	[Export] private bool useWorldDiff = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		fixedPos = Position;
-		fixedRot = Rotation;
+		if (!useWorldDiff) {
+			fixedPos = Position;
+			fixedRot = Rotation;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

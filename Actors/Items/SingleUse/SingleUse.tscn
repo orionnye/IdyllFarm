@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2ir81co42grf"]
+
+[ext_resource type="Script" path="res://Actors/Items/SingleUse/SingleUse.cs" id="1_kj2s6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56hdj"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yfur4"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="SingleUse" type="RigidBody3D" groups=["Item"]]
+script = ExtResource("1_kj2s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_56hdj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yfur4")

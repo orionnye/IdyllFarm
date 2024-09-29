@@ -23,6 +23,13 @@ project/assembly_name="Farm"
 folder_colors={
 "res://Actors/": "red",
 "res://Actors/Items/": "purple",
+"res://Actors/Items/Default/": "gray",
+"res://Actors/Items/Flashlight/": "yellow",
+"res://Actors/Items/Lantern/": "orange",
+"res://Actors/Items/OneShot/": "blue",
+"res://Actors/Items/Projectiles/": "red",
+"res://Actors/Items/Projectiles/Projectile/": "red",
+"res://Actors/Items/SingleUse/": "green",
 "res://Assets/": "blue",
 "res://Assets/Materials/": "purple",
 "res://Environment/": "green",

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://4oht66u6b6t3"]
+
+[ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="1_2msxj"]
+[ext_resource type="Script" path="res://Actors/Items/Projectiles/Bullet/Bullet.cs" id="1_sygaq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vdkod"]
+radius = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_fik8s"]
+radius = 0.2
+height = 0.4
+
+[node name="Bullet" type="RigidBody3D"]
+mass = 0.2
+script = ExtResource("1_sygaq")
+impulseDir = Vector3(0, 1, 5)
+mass = 0.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_vdkod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fik8s")
+surface_material_override/0 = ExtResource("1_2msxj")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

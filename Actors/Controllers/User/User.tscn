@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Actors/Controllers/User/User.cs" id="1_elnjs"]
 [ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_gisbw"]
 [ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="2_jaxxf"]
-[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="2_s672s"]
 [ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="3_j7w1j"]
 [ext_resource type="PackedScene" uid="uid://cur88scnr5imy" path="res://Environment/Particles/Particles.tscn" id="5_mt847"]
 [ext_resource type="Material" uid="uid://diqk0fbiavdns" path="res://Assets/Materials/Marker.tres" id="5_tnj4n"]
+[ext_resource type="Script" path="res://UI/Camera/scripts/Camera.cs" id="7_o1jq1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8muqs"]
 
@@ -21,7 +21,7 @@ size = Vector3(0.3, 0.3, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_o2ap6"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="User" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "inputMarker", "velocityMarker")]
+[node name="User" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "inputMarker", "velocityMarker", "Meshes", "hands")]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -32,11 +32,11 @@ speedGain = 10.0
 spawnAnchor = NodePath("Particles")
 inputMarker = NodePath("InputMarker")
 velocityMarker = NodePath("VelocityMarker")
+Meshes = NodePath("Meshes")
+hands = NodePath("Meshes/Hands")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8muqs")
-
-[node name="Focus" parent="." instance=ExtResource("2_s672s")]
 
 [node name="Meshes" type="Node3D" parent="."]
 
@@ -55,7 +55,7 @@ mesh = SubResource("BoxMesh_i64fo")
 surface_material_override/0 = ExtResource("3_j7w1j")
 
 [node name="Hands" parent="Meshes" instance=ExtResource("2_jaxxf")]
-transform = Transform3D(-0.00651002, 0, -0.999979, 0, 1, 0, 0.999979, 0, -0.00651002, 0, 0, -1.05839)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
 
 [node name="Particles" parent="." instance=ExtResource("5_mt847")]
 top_level = true
@@ -75,3 +75,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64898, 0)
 mesh = SubResource("BoxMesh_o2ap6")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")
+
+[node name="Focus" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("7_o1jq1")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Focus"]
+transform = Transform3D(1, 0, 0, 0, 0.70834, 0.705872, 0, -0.705872, 0.70834, 0, 6.96463, 4.43022)

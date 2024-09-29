@@ -37,6 +37,10 @@ public partial class Hands : Node3D
 			}
 		}
 	}
+	public void HoldLerp(Item item) {
+		float lerpWeight = 0.9f;
+		item.Position = item.Position.Lerp(item.heldPosition, lerpWeight);
+	}
 	
 	// Grab Object
 	public void Grab(Item item) {
@@ -45,6 +49,7 @@ public partial class Hands : Node3D
 			item.Position = item.heldPosition;
 			item.Rotation = item.heldRotation;
 			item.Set("freeze", true);
+			// item.held = true;
 		}
 	}
 	// Drop Object Held in hands
@@ -65,29 +70,13 @@ public partial class Hands : Node3D
 		}
 		return null;
 	}
+	public void toggleHold() {
+		
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Item target = getTargetItem();
-		// if (target != null) {
-		// 	cam.TextOnNode(target);
-		// }
-		if (isHolding() && Input.IsActionJustReleased("Space")) {
-			Use((Item)grabber.GetChild(0));
-		}
-		if (Input.IsActionJustReleased("Shift")) {
-			// GD.Print("isHolding: ", isHolding());
-			if (isHolding()) {
-				// GD.Print("trying to drop");
-				Drop();
-			} else {
-				if (target != null) {
-					// GD.Print("trying to grab");
-					Grab(target);
-				}
-				// Restructure this design to return the object closest and add a UI element in the viewport over it
-			}
-		}
+		
 	}
 }

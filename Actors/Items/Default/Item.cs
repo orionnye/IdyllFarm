@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Item : Node3D
+public partial class Item : RigidBody3D
 {
 	// Storage and Translation
 	[Export] public Vector3 heldPosition = new Vector3(0, 0, 0);

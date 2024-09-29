@@ -1,2 +1,8 @@
-res://Assets/PhysicsMaterials
+res://UI/Camera/scripts
+res://Actors/Items/Projectiles/Water
 res://Assets/Materials
+res://Actors/Items/Projectiles/Bullet
+res://Actors/Items/Projectiles/Projectile
+res://Assets/Models/Lantern
+res://Actors/Items
+res://Assets/PhysicsMaterials

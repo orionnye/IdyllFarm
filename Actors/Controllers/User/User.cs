@@ -8,13 +8,15 @@ public partial class User : RigidBody3D
 	[Export] public Node3D spawnAnchor;
 	[Export] public Vector3 spawnPoint = new Vector3(0, 1, 0);
 	[Export] public bool spawnControl = false;
-	// public float boost = 
 	[Export] public Node3D inputMarker;
 	[Export] public Node3D velocityMarker;
+	[Export] public Node3D Meshes;
+	[Export] public Hands hands;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 	}
+
 	public void UserControls() {
 		Vector3 yBump = new Vector3(0, 0.1f, 0);
 		if (Input.IsActionJustReleased("Space")) {
@@ -28,6 +30,29 @@ public partial class User : RigidBody3D
 			spawnAnchor.GlobalPosition = GlobalPosition;
 			// Reset teleport
 			// GD.Print("reset spawn");
+		}
+		userHands();
+	}
+	public void userHands() {
+		Item target = hands.getTargetItem();
+		// if (target != null) {
+		// 	cam.TextOnNode(target);
+		// }
+		if (hands.isHolding() && Input.IsActionJustReleased("Space")) {
+			hands.Use((Item)hands.grabber.GetChild(0));
+		}
+		if (Input.IsActionJustReleased("Shift")) {
+			// GD.Print("isHolding: ", isHolding());
+			if (hands.isHolding()) {
+				// GD.Print("trying to drop");
+				hands.Drop();
+			} else {
+				if (target != null) {
+					// GD.Print("trying to grab");
+					hands.Grab(target);
+				}
+				// Restructure this design to return the object closest and add a UI element in the viewport over it
+			}
 		}
 	}
 	public Vector3 UserWASD() {
@@ -52,6 +77,7 @@ public partial class User : RigidBody3D
 		}
 		return direction.Normalized();
 	}
+
 	public void checkBounds() {
 		if (GlobalPosition.Y <= -2) {
 			GlobalPosition = spawnPoint;
@@ -77,11 +103,11 @@ public partial class User : RigidBody3D
 		velocityMarker.GlobalPosition = velocityMarker.GlobalPosition.Lerp(trajectory, 0.8f);
 	}
 	public void updateMeshLook() {
-		Node3D mesh = (Node3D)GetNode("Meshes");
-		float diff = (mesh.Position - inputMarker.Position).Length();
+		;
+		float diff = (Meshes.Position - inputMarker.Position).Length();
 		float diffMin = 0.1f;
 		if (diff > diffMin) {
-			mesh.LookAt(inputMarker.GlobalPosition);
+			Meshes.LookAt(inputMarker.GlobalPosition);
 		}
 	}
 

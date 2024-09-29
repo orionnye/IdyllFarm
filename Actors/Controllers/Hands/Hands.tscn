@@ -17,6 +17,7 @@ grabber = NodePath("Grabber")
 shape = SubResource("SphereShape3D_u3ffa")
 
 [node name="HandMesh" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HandMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.696368)

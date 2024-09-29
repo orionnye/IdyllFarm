@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://df6dyw7i5f7im"]
+
+[ext_resource type="Script" path="res://Actors/Items/Lantern/Lantern.cs" id="1_0fmuc"]
+[ext_resource type="PackedScene" uid="uid://fw5wppodhtv" path="res://Assets/Models/Lantern/lantern.tscn" id="2_2uqxi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nstdh"]
+height = 0.98672
+radius = 0.32599
+
+[sub_resource type="SphereMesh" id="SphereMesh_jc6ii"]
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s56sb"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.505882)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+
+[node name="Lantern" type="RigidBody3D" node_paths=PackedStringArray("lightSource") groups=["Item"]]
+script = ExtResource("1_0fmuc")
+lightSource = NodePath("OmniLight3D")
+lightOn = 20.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520974, -0.000897169)
+shape = SubResource("CylinderShape3D_nstdh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0155628, 0.61853, 0)
+layers = 2
+light_size = 0.273
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_bias = 1.464
+shadow_blur = 4.03
+omni_range = 5.29855
+
+[node name="Lantern" parent="." instance=ExtResource("2_2uqxi")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435466, 0)
+layers = 2
+mesh = SubResource("SphereMesh_jc6ii")
+surface_material_override/0 = SubResource("StandardMaterial3D_s56sb")

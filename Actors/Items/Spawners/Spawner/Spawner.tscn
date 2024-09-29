@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dae5ysynsoy4l"]
+
+[ext_resource type="Script" path="res://Actors/Items/Spawners/Spawner/Spawner.cs" id="1_iqq5a"]
+[ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_ghlja"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfsyp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qeqo3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1jkg7"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Spawner" type="RigidBody3D" node_paths=PackedStringArray("spawnNode") groups=["Item"]]
+script = ExtResource("1_iqq5a")
+spawnNode = NodePath("SpawnNode")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hfsyp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qeqo3")
+
+[node name="SpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnNode"]
+mesh = SubResource("BoxMesh_1jkg7")
+surface_material_override/0 = ExtResource("2_ghlja")

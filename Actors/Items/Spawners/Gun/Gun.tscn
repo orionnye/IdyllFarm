@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2mowv763o3fq"]
+
+[ext_resource type="Script" path="res://Actors/Items/Spawners/Gun/Gun.cs" id="1_ql61e"]
+[ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="1_xf40k"]
+[ext_resource type="PackedScene" uid="uid://4oht66u6b6t3" path="res://Actors/Items/Projectiles/Bullet/Bullet.tscn" id="2_cy1cl"]
+[ext_resource type="Material" uid="uid://4r6p42l6b1bv" path="res://Assets/Materials/Red.tres" id="2_jv4i1"]
+[ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="4_8tdv1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ar1it"]
+height = 1.5
+radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_j3wy1"]
+size = Vector3(0.25, 0.2, 0.75)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s6nf0"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.5
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="BoxMesh_x86mq"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("spawnNode") groups=["Item"]]
+transform = Transform3D(1, 3.24135e-05, -3.18529e-05, -3.24135e-05, 1, 2.6006e-05, 3.18529e-05, -2.6006e-05, 1, 0, 0, 0)
+script = ExtResource("1_ql61e")
+bulletCount = 5
+noise = 0.8
+cooldown = 1.0
+spawnNode = NodePath("SpawnNode")
+item = ExtResource("2_cy1cl")
+heldPosition = Vector3(-1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00267033, -0.999996, 0, 0.999996, -0.00267033, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ar1it")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="GripFront" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, -3.6664e-12, 0, 1.1256e-12, -0.999948, 0.0101577, 0, -0.0101577, -0.999948, -0.00190068, -0.140255, -0.62986)
+mesh = SubResource("BoxMesh_j3wy1")
+skeleton = NodePath("../Barrel")
+surface_material_override/0 = ExtResource("2_jv4i1")
+
+[node name="Handle" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 5.32022e-05, -0.0900581, 0.840683)
+mesh = SubResource("BoxMesh_j3wy1")
+skeleton = NodePath("../Barrel")
+surface_material_override/0 = ExtResource("2_jv4i1")
+
+[node name="Barrel" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_s6nf0")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_xf40k")
+
+[node name="SpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 1.07075e-12, 0, 1.1256e-12, 1, 0, 0, 0, 1, 0, 0, -1.1)
+
+[node name="SpawnMarker" type="MeshInstance3D" parent="SpawnNode"]
+transform = Transform3D(1, 1.07075e-12, 0, 1.1256e-12, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_x86mq")
+surface_material_override/0 = ExtResource("4_8tdv1")

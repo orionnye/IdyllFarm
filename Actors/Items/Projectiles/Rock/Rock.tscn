@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://drcq0uvmk2sfp"]
+
+[ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="1_5hxfw"]
+[ext_resource type="Script" path="res://Actors/Items/Projectiles/Rock/Rock.cs" id="1_u04r8"]
+[ext_resource type="Material" uid="uid://dko7ndjjouvgr" path="res://Assets/Materials/Mud.tres" id="2_kns08"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4lg0f"]
+radius = 0.106241
+
+[sub_resource type="BoxMesh" id="BoxMesh_m5s18"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Rock" type="RigidBody3D" groups=["Item"]]
+script = ExtResource("1_u04r8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4.21461, 2.23961, 1.49036, -2.69018, 3.50873, 2.3349, 0, -2.77001, 4.16258, 0, 0, 0.00596127)
+shape = SubResource("SphereShape3D_4lg0f")
+
+[node name="Core" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.015059, 0.00489293, 0.00460562)
+mesh = SubResource("BoxMesh_m5s18")
+surface_material_override/0 = ExtResource("1_5hxfw")
+
+[node name="Mud" type="MeshInstance3D" parent="Core"]
+transform = Transform3D(0.896865, 0.442304, -1.29511e-08, -0.333588, 0.676421, 0.656639, 0.290434, -0.588916, 0.754206, 0.0265778, 0.0390378, -0.00980423)
+mesh = SubResource("BoxMesh_m5s18")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_kns08")
+
+[node name="Mud2" type="MeshInstance3D" parent="Core"]
+transform = Transform3D(0.751822, 0.467267, -0.465216, 0.495656, 0.0647975, 0.866099, 0.434844, -0.881738, -0.182888, -0.0116452, -0.0284994, 0.051676)
+mesh = SubResource("BoxMesh_m5s18")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_kns08")
+
+[node name="Mud3" type="MeshInstance3D" parent="Core"]
+transform = Transform3D(0.939852, -0.335478, 0.064285, 0.308074, 0.751219, -0.583747, 0.147542, 0.568441, 0.809386, -0.00980885, -0.043702, -0.025115)
+mesh = SubResource("BoxMesh_m5s18")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_kns08")
+
+[node name="Mud4" type="MeshInstance3D" parent="Core"]
+transform = Transform3D(0.277932, -0.552549, -0.785776, 0.846164, 0.528035, -0.0720163, 0.454709, -0.644879, 0.614305, -0.0611875, 0.0211909, 0.00713724)
+mesh = SubResource("BoxMesh_m5s18")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_kns08")

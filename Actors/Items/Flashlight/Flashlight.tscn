@@ -47,7 +47,9 @@ mesh = SubResource("SphereMesh_3x3au")
 surface_material_override/0 = ExtResource("1_os5b5")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.261536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08208e-09, 0, -0.353984)
 light_energy = 16.0
-spot_range = 8.73848
-spot_angle = 15.1762
+light_size = 0.157
+shadow_enabled = true
+spot_range = 27.1464
+spot_angle = 30.2746
