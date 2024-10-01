@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwpne6caurrrd"]
+[gd_scene load_steps=18 format=3 uid="uid://dwpne6caurrrd"]
 
 [ext_resource type="Material" uid="uid://bc8jf5ofqnb8y" path="res://Assets/Materials/Grabble.tres" id="1_y5nhv"]
 [ext_resource type="PhysicsMaterial" uid="uid://hbgvsi3yw404" path="res://Assets/PhysicsMaterials/BouncyMud.tres" id="2_2fks2"]
@@ -8,10 +8,9 @@
 [ext_resource type="PhysicsMaterial" uid="uid://7dhmmti8rb6n" path="res://Assets/PhysicsMaterials/Ice.tres" id="2_mn4to"]
 [ext_resource type="PhysicsMaterial" uid="uid://db4q8vxw68hft" path="res://Assets/PhysicsMaterials/AbsorbFrictionless.tres" id="2_ukmca"]
 [ext_resource type="Material" uid="uid://c402h4infc2t6" path="res://Assets/Materials/Ice.tres" id="2_v4774"]
-[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="3_26ugn"]
 [ext_resource type="Material" uid="uid://dko7ndjjouvgr" path="res://Assets/Materials/Mud.tres" id="4_bfnvb"]
-[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="4_xv7x6"]
 [ext_resource type="PackedScene" uid="uid://0p6sxxyyyk6s" path="res://Environment/Static/Primary/IceCube.tscn" id="7_573lj"]
+[ext_resource type="PackedScene" uid="uid://3m52ixqp6hgn" path="res://Actors/Controllers/User/User.tscn" id="8_m4ckp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_40tj5"]
 sky_top_color = Color(0.570961, 0.793304, 0.843614, 1)
@@ -114,6 +113,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35916, 12.2364, -15.3721)
 
 [node name="Cube3" parent="IcePlane" instance=ExtResource("2_hy6jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61064, 11.2871, -16.9421)
+
+[node name="User" parent="." instance=ExtResource("8_m4ckp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43212, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -218,7 +220,7 @@ transform = Transform3D(0.999874, 0, -0.0158644, 0, 1, 0, 0.0158644, 0, 0.999874
 transform = Transform3D(0.396399, 0.076566, 0.220466, 0.0817139, 0.361502, -0.272468, -0.218611, 0.273959, 0.297919, 20.394, 3.87743, -2.30713)
 
 [node name="IceCube" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
-transform = Transform3D(21.9773, -3.68623, -11.3319, -7.4661, 14.2695, -19.1217, 9.2875, 20.1939, 11.4433, 31.6532, -2.48919, -7.47362)
+transform = Transform3D(21.9773, -3.68623, -11.3319, -7.4661, 14.2695, -19.1217, 9.2875, 20.1939, 11.4433, 32.0631, -0.675604, -8.84053)
 
 [node name="IceCube2" parent="Environment/Node3D" instance=ExtResource("7_573lj")]
 transform = Transform3D(22.0891, -1.44241, -11.6185, -6.33088, 19.3978, -14.4445, 9.84832, 15.7049, 16.774, 16.4609, -9.98704, 5.77248)
@@ -263,11 +265,6 @@ transform = Transform3D(0.314659, 0.314659, -28.0465, -19.8343, 19.8343, 0, 19.8
 transform = Transform3D(0.314659, 0.314659, -28.0465, -19.8343, 19.8343, 0, 19.8319, 19.8319, 0.444995, 52.209, -4.78254, 44.6124)
 
 [node name="Ramps" type="Node3D" parent="Environment"]
-
-[node name="Wasd" parent="." instance=ExtResource("3_26ugn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99046, 0)
-
-[node name="Focus" parent="Wasd" instance=ExtResource("4_xv7x6")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.838215, -0.476578, 0.265084, 0.449591, 0.879023, 0.1587, -0.308648, -0.013845, 0.951075, 0, 5.13208, 8.36792)

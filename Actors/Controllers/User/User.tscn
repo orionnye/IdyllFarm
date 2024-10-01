@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3m52ixqp6hgn"]
+[gd_scene load_steps=14 format=3 uid="uid://3m52ixqp6hgn"]
 
 [ext_resource type="Script" path="res://Actors/Controllers/User/User.cs" id="1_elnjs"]
 [ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_gisbw"]
@@ -9,6 +9,12 @@
 [ext_resource type="Script" path="res://UI/Camera/scripts/Camera.cs" id="7_o1jq1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8muqs"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_awkbm"]
+top_radius = 0.3
+bottom_radius = 0.1
+height = 1.0
+radial_segments = 4
 
 [sub_resource type="SphereMesh" id="SphereMesh_7qq0c"]
 
@@ -21,7 +27,7 @@ size = Vector3(0.3, 0.3, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_o2ap6"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="User" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "inputMarker", "velocityMarker", "Meshes", "hands")]
+[node name="User" type="RigidBody3D" node_paths=PackedStringArray("spawnAnchor", "inputMarker", "velocityMarker", "velocityMesh", "Meshes", "focusMarker", "devCam", "shoulderCam", "hands")]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -32,11 +38,26 @@ speedGain = 10.0
 spawnAnchor = NodePath("Particles")
 inputMarker = NodePath("InputMarker")
 velocityMarker = NodePath("VelocityMarker")
+velocityMesh = NodePath("VelocityMarker/VelocityMarker")
 Meshes = NodePath("Meshes")
+focusMarker = NodePath("FocusMarker")
+devCam = NodePath("DevCam/Camera3D")
+shoulderCam = NodePath("DevCam/Camera3D")
 hands = NodePath("Meshes/Hands")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8muqs")
+
+[node name="FocusMarker" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="FocusMarker"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3.5, 5)
+
+[node name="FocusMarker" type="MeshInstance3D" parent="FocusMarker"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.42507, 0)
+mesh = SubResource("CylinderMesh_awkbm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="Meshes" type="Node3D" parent="."]
 
@@ -69,16 +90,17 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="VelocityMarker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="VelocityMarker" type="MeshInstance3D" parent="VelocityMarker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64898, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("BoxMesh_o2ap6")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
-[node name="Focus" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
-script = ExtResource("7_o1jq1")
-camera = NodePath("Camera3D")
+[node name="DevCam" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Focus"]
-transform = Transform3D(1, 0, 0, 0, 0.70834, 0.705872, 0, -0.705872, 0.70834, 0, 6.96463, 4.43022)
+[node name="Camera3D" type="Camera3D" parent="DevCam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
+current = true
+script = ExtResource("7_o1jq1")

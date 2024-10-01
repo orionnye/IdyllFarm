@@ -36,3 +36,6 @@ res://Actors/Items/Projectiles/Water/Water.cs
 res://Actors/Items/Spawners/WateringCan/WateringCan.cs
 res://Actors/Items/Spawners/Spawner/Spawner.tscn
 res://Environment/DestructiblesTest/DestructiblesTest.tscn
+res://Environment/Movement/Movement.tscn
+res://Assets/Materials/Grabble.tres
+res://Assets/Materials/Ice.tres

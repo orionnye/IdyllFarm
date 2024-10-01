@@ -1,7 +1,7 @@
 Camera3D
 Node3D
-CollisionShape3D
 MeshInstance3D
+CollisionShape3D
 StaticBody3D
 Timer
 RigidBody3D
