@@ -39,3 +39,5 @@ res://Environment/DestructiblesTest/DestructiblesTest.tscn
 res://Environment/Movement/Movement.tscn
 res://Assets/Materials/Grabble.tres
 res://Assets/Materials/Ice.tres
+res://Actors/Controllers/AI/Follow/Follow.tscn
+res://Actors/Controllers/AI/Follow/Follow.cs

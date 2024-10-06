@@ -13,10 +13,11 @@ public partial class User : RigidBody3D
 	[Export] public Node3D velocityMarker;
 	[Export] public Node3D velocityMesh;
 
-
 	// Display and Camera
 	[Export] public Node3D Meshes;
 	[Export] public Node3D focusMarker;
+	[Export] public Node3D camLerp;
+	[Export] public Node3D camLerp2;
 	[Export] public bool isDevCam = false;
 	[Export] public Camera3D devCam;
 	[Export] public Camera3D shoulderCam;
@@ -117,57 +118,25 @@ public partial class User : RigidBody3D
 		velocityMarker.GlobalPosition = velocityMarker.GlobalPosition.Lerp(trajectory, 0.8f);
 	}
 	public void updateMeshLook() {
-		float diff = (Meshes.Position - velocityMarker.Position).Length();
-		float diffMin = 0.1f;
-		if (diff > diffMin) {
-			Meshes.LookAt(velocityMarker.GlobalPosition);
+		float diff = Meshes.GlobalPosition.DistanceTo(velocityMesh.GlobalPosition);
+		bool isEqual = Meshes.GlobalPosition.IsEqualApprox(velocityMesh.GlobalPosition);
+		float diffMin = 0.5f;
+		if (diff > diffMin && !isEqual) {
+			Meshes.LookAt(velocityMesh.GlobalPosition);
 		}
 	}
-	// public void trackAngle(float targetAngle) {
-	// 	// Define Rotation for decision
-	// 	float headRot = focus.Rotation.Y;
-	// 	float gainRate = 0.5f;
-
-	// 	// INNER BOUNDS Calculations
-	// 	// Base Assumption for Inner Bounds is that both are opposite sides of 0
-	// 	// Check for both sides being the same and recalculate innerBounds
-	// 	float diff = (headRot+(float)Math.PI) - (targetAngle) - (float)Math.PI;
-	// 	bool turnLeft = true;
-
-	// 	if (Math.Abs(diff) <= Math.PI) {
-	// 		if (targetAngle < headRot) {
-	// 			turnLeft = false;
-	// 		}
-	// 	} else {
-	// 		if (targetAngle > headRot) {
-	// 			turnLeft = false;
-	// 		}
-	// 	}
-		
-	// 	// UI.headRot.SetText(headRot.ToString());
-	// 	// UI.aimRot.SetText(targetAngle.ToString());
-	// 	float spin = 0;
-	// 	// Rotate Turret Right
-	// 	if (!turnLeft) {
-	// 		// GD.Print("Target Right");
-	// 		spin = gainRate;
-	// 		// leftGain = 0;
-	// 	} else {
-	// 		spin = -gainRate;
-	// 	}
-	// }
-
 	public void updateFocusLook() {
-		// float lerpRate = 0.9f;
-		// // GD.Print("FocusRot pre: ", focus.GlobalRotation);
-		// if (inputMarker.Position != focusMarker.Position) {
-		// 	focusMarker.LookAt(velocityMesh.GlobalPosition);
-		// 	// focusMarker.GlobalRotation = focusMarker.GlobalRotation.Lerp(inputMarker.GlobalRotation, lerpRate);
-		// }
-		// focus.GlobalRotation = focus.GlobalRotation.Lerp(Meshes.GlobalRotation, lerpRate);
-		// GD.Print("FocusRot post: ", focus.GlobalRotation);
-		// GD.Print("focus Correction, is being called");
-		// GD.Print("MeshesRot: ", Meshes.GlobalRotation);
+		float dist = focusMarker.GlobalPosition.DistanceTo(velocityMesh.GlobalPosition);
+		// GD.Print("Distance: ", dist);
+		float distMin = 4f;
+		// GD.Print("DistMin: ", distMin);
+		// bool isEqual = focusMarker.GlobalPosition != velocityMesh.GlobalPosition;
+		if (dist >= distMin) {
+			camLerp.GlobalPosition = camLerp.GlobalPosition.Lerp(velocityMesh.GlobalPosition, 0.1f);
+			camLerp2.GlobalPosition = camLerp2.GlobalPosition.Lerp(camLerp.GlobalPosition, 0.1f);
+			focusMarker.LookAt(camLerp2.GlobalPosition);
+		}
+		// if pos is too close, look at inverse or disable
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
