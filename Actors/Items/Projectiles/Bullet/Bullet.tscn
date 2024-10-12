@@ -12,6 +12,8 @@ height = 0.4
 
 [node name="Bullet" type="RigidBody3D"]
 mass = 0.2
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_sygaq")
 impulseDir = Vector3(0, 1, 5)
 mass = 0.2

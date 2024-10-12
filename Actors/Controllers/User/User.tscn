@@ -112,10 +112,8 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="VelocityMarker" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.53707)
 
 [node name="VelocityMarker" type="MeshInstance3D" parent="VelocityMarker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.354614, -0.25, 0)
 mesh = SubResource("BoxMesh_o2ap6")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")

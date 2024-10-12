@@ -41,3 +41,5 @@ res://Assets/Materials/Grabble.tres
 res://Assets/Materials/Ice.tres
 res://Actors/Controllers/AI/Follow/Follow.tscn
 res://Actors/Controllers/AI/Follow/Follow.cs
+res://Actors/Items/Destructible/Crate/Crate.tscn
+res://Actors/Items/Destructible/Crate/Crate.cs

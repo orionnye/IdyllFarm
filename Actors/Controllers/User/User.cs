@@ -50,9 +50,6 @@ public partial class User : RigidBody3D
 	}
 	public void userHands() {
 		Item target = hands.getTargetItem();
-		// if (target != null) {
-		// 	cam.TextOnNode(target);
-		// }
 		if (hands.isHolding() && Input.IsActionJustReleased("Space")) {
 			hands.Use((Item)hands.grabber.GetChild(0));
 		}
@@ -118,11 +115,13 @@ public partial class User : RigidBody3D
 		velocityMarker.GlobalPosition = velocityMarker.GlobalPosition.Lerp(trajectory, 0.8f);
 	}
 	public void updateMeshLook() {
-		float diff = Meshes.GlobalPosition.DistanceTo(velocityMesh.GlobalPosition);
-		bool isEqual = Meshes.GlobalPosition.IsEqualApprox(velocityMesh.GlobalPosition);
-		float diffMin = 0.5f;
-		if (diff > diffMin && !isEqual) {
-			Meshes.LookAt(velocityMesh.GlobalPosition);
+		float diff = Meshes.GlobalPosition.DistanceTo(velocityMarker.GlobalPosition);
+		bool isEqual = Meshes.GlobalPosition == velocityMarker.GlobalPosition;
+		float diffMin = 4f;
+		// Error we're getting: "p_up.cross(p_target - p_pos).is_zero_approx()" is true
+		// bool isAligned = Meshes. .Cross(velocityMesh.GlobalPosition - Meshes.GlobalPosition).IsZeroApprox();
+		if (!isEqual && diff > diffMin) {
+			Meshes.LookAt(velocityMarker.GlobalPosition);
 		}
 	}
 	public void updateFocusLook() {

@@ -25,7 +25,6 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("spawnNode") groups=["Item"]]
 transform = Transform3D(1, 3.24135e-05, -3.18529e-05, -3.24135e-05, 1, 2.6006e-05, 3.18529e-05, -2.6006e-05, 1, 0, 0, 0)
 script = ExtResource("1_ql61e")
-bulletCount = 5
 noise = 0.8
 cooldown = 1.0
 spawnNode = NodePath("SpawnNode")

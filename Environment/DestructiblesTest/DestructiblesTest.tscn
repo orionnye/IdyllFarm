@@ -1,6 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq65q7rcy2lf5"]
+[gd_scene load_steps=12 format=3 uid="uid://cq65q7rcy2lf5"]
 
 [ext_resource type="PackedScene" uid="uid://3m52ixqp6hgn" path="res://Actors/Controllers/User/User.tscn" id="1_0ab7m"]
+[ext_resource type="PackedScene" uid="uid://d2ir81co42grf" path="res://Actors/Items/SingleUse/SingleUse.tscn" id="2_fxd35"]
+[ext_resource type="PackedScene" uid="uid://dqvhhe2lct3wc" path="res://Actors/Items/Destructible/Crate/Crate.tscn" id="3_tuhp7"]
+[ext_resource type="PackedScene" uid="uid://d2mowv763o3fq" path="res://Actors/Items/Spawners/Gun/Gun.tscn" id="4_4luww"]
+[ext_resource type="PackedScene" uid="uid://08sinnlkteef" path="res://Environment/Static/Primary/Cube.tscn" id="5_ty8h8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2fd4"]
 size = Vector3(40, 0.1, 40)
@@ -40,3 +44,31 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mxes4")
 
 [node name="User" parent="." instance=ExtResource("1_0ab7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6389, 0)
+spawnControl = false
+
+[node name="SingleUse" parent="." instance=ExtResource("2_fxd35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56817, 0.896254, -7.3969)
+
+[node name="Crate" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95707, 1.5837, -10.1383)
+
+[node name="Crate2" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72418, 1.5837, -10.1383)
+
+[node name="Crate3" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7686, 1.5837, -10.1383)
+
+[node name="Crate4" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19224, 1.5837, -10.1383)
+
+[node name="Crate5" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90796, 1.5837, -10.1383)
+
+[node name="Crate6" parent="." instance=ExtResource("3_tuhp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61122, 1.5837, -10.1383)
+
+[node name="Gun" parent="." instance=ExtResource("4_4luww")]
+transform = Transform3D(1, 3.24135e-05, -3.18529e-05, -3.24135e-05, 1, 2.6006e-05, 3.18529e-05, -2.6006e-05, 1, -6.16759, 1.96847, 5.95672)
+
+[node name="Cube" parent="." instance=ExtResource("5_ty8h8")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, -36.3102)

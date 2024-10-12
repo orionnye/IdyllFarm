@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqvhhe2lct3wc"]
+
+[ext_resource type="Script" path="res://Actors/Items/Destructible/Crate/Crate.cs" id="1_ano5f"]
+[ext_resource type="PackedScene" uid="uid://d2ir81co42grf" path="res://Actors/Items/SingleUse/SingleUse.tscn" id="2_tr0on"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvrme"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_recr3"]
+
+[node name="Crate" type="RigidBody3D" node_paths=PackedStringArray("contained") groups=["Item"]]
+physics_interpolation_mode = 1
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_ano5f")
+contained = NodePath("Contained")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tvrme")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_recr3")
+
+[node name="Contained" type="Node3D" parent="."]
+visible = false
+
+[node name="SingleUse" parent="Contained" instance=ExtResource("2_tr0on")]
+
+[node name="SingleUse2" parent="Contained" instance=ExtResource("2_tr0on")]
+
+[node name="SingleUse3" parent="Contained" instance=ExtResource("2_tr0on")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,11 @@
-MeshInstance3D
 Node3D
-Camera3D
+VehicleWheel3D
+MeshInstance3D
 CollisionShape3D
+RigidBody3D
+Camera3D
 StaticBody3D
 Timer
-RigidBody3D
 OmniLight3D
 SpotLight3D
 DirectionalLight3D
