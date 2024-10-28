@@ -1,32 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwkyaf5pov4yy"]
+[gd_scene load_steps=4 format=3 uid="uid://dwkyaf5pov4yy"]
 
-[ext_resource type="PackedScene" uid="uid://08sinnlkteef" path="res://Environment/Static/Primary/Cube.tscn" id="2_4q1yy"]
-[ext_resource type="PackedScene" uid="uid://djhysqv8ddu2x" path="res://Environment/Rigid/Primary/Sphere.tscn" id="3_o8hut"]
-[ext_resource type="PackedScene" uid="uid://cej6uayqdbr6a" path="res://UI/Camera/Camera.tscn" id="5_3pdcm"]
-[ext_resource type="PackedScene" uid="uid://b17sybn5m6m3a" path="res://Actors/Controllers/wasd/wasd.tscn" id="5_qplr8"]
-[ext_resource type="PackedScene" uid="uid://duqwjk1ityn0n" path="res://Environment/Testing/Motion/Plane.tscn" id="8_nmdal"]
+[ext_resource type="PackedScene" uid="uid://ccmo2txak3hsu" path="res://Environment/Static/Primary/Plane.tscn" id="1_p5maq"]
+[ext_resource type="PackedScene" uid="uid://bugm86q27jcpi" path="res://Actors/Plants/BasePlant/BasePlant.tscn" id="2_8rodv"]
+[ext_resource type="Script" path="res://UI/Camera/scripts/Focus.cs" id="3_8d0vn"]
 
 [node name="Farm" type="Node3D"]
 
-[node name="Cube" parent="." instance=ExtResource("2_4q1yy")]
-transform = Transform3D(0.944566, 0.328323, 0, -0.328323, 0.944566, 0, 0, 0, 1, -2.72588, 0.378952, -2.26594)
+[node name="Plane" parent="." instance=ExtResource("1_p5maq")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
-[node name="Sphere" parent="." instance=ExtResource("3_o8hut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34511, 2.43936, -2.20942)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[node name="BasePlant" parent="." instance=ExtResource("2_8rodv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135459, 0, -0.0202663)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.91609, 0.400973, 0, -0.400973, 0.91609, 0, 14.4752, 0)
+transform = Transform3D(0.849488, -0.0556263, 0.524668, -0.527608, -0.0895624, 0.844753, 0, -0.994427, -0.105431, 3.7917, 2.08181, 0)
 
-[node name="Wasd" parent="." instance=ExtResource("5_qplr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36783, 1.05119, 1.74431)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[node name="Focus" type="Node3D" parent="."]
+script = ExtResource("3_8d0vn")
 
-[node name="Focus" parent="Wasd" instance=ExtResource("5_3pdcm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31929, 0)
-
-[node name="Plane" parent="." instance=ExtResource("8_nmdal")]
+[node name="Camera3D" type="Camera3D" parent="Focus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.09739, 21.4713)

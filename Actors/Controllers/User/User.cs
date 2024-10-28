@@ -18,9 +18,12 @@ public partial class User : RigidBody3D
 	[Export] public Node3D focusMarker;
 	[Export] public Node3D camLerp;
 	[Export] public Node3D camLerp2;
+	[Export] public bool AutoCamControl = true;
 	[Export] public bool isDevCam = false;
 	[Export] public Camera3D devCam;
 	[Export] public Camera3D shoulderCam;
+
+	// User Tools
 	[Export] public Hands hands;
 
 	// Called when the node enters the scene tree for the first time.
@@ -143,15 +146,22 @@ public partial class User : RigidBody3D
 		checkBounds();
 		UserControls();
 		updateInputMarker();
-		updateVelocityMarker();
-		updateMeshLook();
-		updateFocusLook();
+		if (AutoCamControl) {
+			updateVelocityMarker();
+			// updateMeshLook();
+			updateFocusLook();
+		}
 	}
     public override void _IntegrateForces(PhysicsDirectBodyState3D state) {
         base._IntegrateForces(state);
     }
     public override void _PhysicsProcess(double delta) {
 		base._PhysicsProcess(delta);
+		if (AutoCamControl) {
+			// updateVelocityMarker();
+			updateMeshLook();
+			// updateFocusLook();
+		}
 		// Find the input force depending on current speed
 		// Max out the speed or speed gain depending on current velocity
 

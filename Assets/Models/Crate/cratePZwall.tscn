@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch8fu1bsfs3hv"]
+
+[ext_resource type="PackedScene" uid="uid://bqnejd0p0uird" path="res://Actors/Items/Destructible/Crate/Crate.glb" id="1_k5q8x"]
+
+[node name="Crate" instance=ExtResource("1_k5q8x")]
+
+[node name="Cube_039" parent="." index="0"]
+visible = false
+
+[node name="Cube_004" parent="." index="1"]
+visible = false
+
+[node name="Cube_005" parent="." index="2"]
+visible = false
+
+[node name="Cube_006" parent="." index="3"]
+visible = false
+
+[node name="Cube_007" parent="." index="4"]
+visible = false

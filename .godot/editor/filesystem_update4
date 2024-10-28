@@ -43,3 +43,15 @@ res://Actors/Controllers/AI/Follow/Follow.tscn
 res://Actors/Controllers/AI/Follow/Follow.cs
 res://Actors/Items/Destructible/Crate/Crate.tscn
 res://Actors/Items/Destructible/Crate/Crate.cs
+res://Actors/Items/SingleUse/SingleUse.tscn
+res://Assets/Models/Crate/cratePXwall.tscn
+res://Assets/Models/Crate/crateNXwall.tscn
+res://Assets/Models/Crate/cratePZwall.tscn
+res://Environment/Rigid/Debris/CrateWall/CrateWall.tscn
+res://Environment/Farm/Farm.tscn
+res://Actors/Plants/BasePlant/BasePlant.tscn
+res://Actors/Plants/PlantParts/Stem.tscn
+res://Actors/Plants/PlantParts/Leaf.tscn
+res://Actors/Plants/BasePlant/BasePlant.cs
+res://Actors/Plants/PlantParts/Stem.cs
+res://UI/Camera/scripts/Focus.cs

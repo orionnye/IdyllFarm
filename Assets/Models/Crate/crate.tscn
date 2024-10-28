@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://wn7d1mcjbrtr"]
+
+[ext_resource type="PackedScene" uid="uid://bqnejd0p0uird" path="res://Actors/Items/Destructible/Crate/Crate.glb" id="1_nnw1y"]
+
+[node name="Crate" instance=ExtResource("1_nnw1y")]

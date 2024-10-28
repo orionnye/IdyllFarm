@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqvhhe2lct3wc"]
+[gd_scene load_steps=7 format=3 uid="uid://dqvhhe2lct3wc"]
 
 [ext_resource type="Script" path="res://Actors/Items/Destructible/Crate/Crate.cs" id="1_ano5f"]
 [ext_resource type="PackedScene" uid="uid://d2ir81co42grf" path="res://Actors/Items/SingleUse/SingleUse.tscn" id="2_tr0on"]
+[ext_resource type="PackedScene" uid="uid://bqnejd0p0uird" path="res://Actors/Items/Destructible/Crate/Crate.glb" id="2_yli7c"]
+[ext_resource type="PackedScene" uid="uid://yp2fl4pmn7b1" path="res://Environment/Rigid/Debris/CrateWall/CrateWall.tscn" id="4_1bam8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvrme"]
 
@@ -18,7 +20,11 @@ contained = NodePath("Contained")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tvrme")
 
+[node name="Crate" parent="." instance=ExtResource("2_yli7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_recr3")
 
 [node name="Contained" type="Node3D" parent="."]
@@ -29,5 +35,23 @@ visible = false
 [node name="SingleUse2" parent="Contained" instance=ExtResource("2_tr0on")]
 
 [node name="SingleUse3" parent="Contained" instance=ExtResource("2_tr0on")]
+
+[node name="CrateWall" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362435, 0)
+
+[node name="CrateWall2" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(-0.00301937, 0.999995, 0, -0.999995, -0.00301937, 0, 0, 0, 1, 0.365632, -0.0239748, 0)
+
+[node name="CrateWall3" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(0.000837695, -1, 0, 1, 0.000837695, 0, 0, 0, 1, -0.383038, -0.00787443, 0)
+
+[node name="CrateWall6" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(-0.999999, 0.00162319, 0, -0.00162319, -0.999999, 0, 0, 0, 1, 0.00337291, -0.362084, 0)
+
+[node name="CrateWall4" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(3.97857e-05, -0.0131768, 0.999913, -0.999995, -0.00301937, 0, 0.00301911, -0.999909, -0.0131768, -0.0136355, -0.0239748, -0.374303)
+
+[node name="CrateWall5" parent="Contained" instance=ExtResource("4_1bam8")]
+transform = Transform3D(-1.10382e-05, 0.0131768, 0.999913, 1, 0.000837695, 0, -0.000837623, 0.999913, -0.0131768, -0.00377045, -0.00787443, 0.374303)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

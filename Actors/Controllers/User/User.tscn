@@ -60,17 +60,20 @@ shape = SubResource("SphereShape3D_8muqs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CamLerp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.840316)
+visible = false
 mesh = SubResource("BoxMesh_t3upc")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="CamLerp2" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CamLerp2"]
+visible = false
 mesh = SubResource("BoxMesh_qwwku")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="FocusMarker" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43446, 0, 0.708017)
+visible = false
 
 [node name="ShoulderCam" type="Camera3D" parent="FocusMarker"]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3.5, 5)
@@ -104,6 +107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
 top_level = true
 
 [node name="InputMarker" type="Node3D" parent="."]
+visible = false
 
 [node name="InputMarker" type="MeshInstance3D" parent="InputMarker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902443, 0)
@@ -112,6 +116,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tnj4n")
 
 [node name="VelocityMarker" type="Node3D" parent="."]
+visible = false
 
 [node name="VelocityMarker" type="MeshInstance3D" parent="VelocityMarker"]
 mesh = SubResource("BoxMesh_o2ap6")

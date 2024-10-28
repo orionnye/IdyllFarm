@@ -31,9 +31,13 @@ folder_colors={
 "res://Actors/Items/Projectiles/": "red",
 "res://Actors/Items/Projectiles/Projectile/": "red",
 "res://Actors/Items/SingleUse/": "green",
+"res://Actors/Plants/": "green",
 "res://Assets/": "blue",
 "res://Assets/Materials/": "purple",
+"res://Assets/Models/": "gray",
 "res://Environment/": "green",
+"res://Environment/DestructiblesTest/": "orange",
+"res://Environment/Farm/": "green",
 "res://Environment/Particles/": "yellow",
 "res://Environment/Rigid/": "gray",
 "res://Environment/Static/": "gray",
@@ -84,5 +88,20 @@ Shift={
 camToggle={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+trigger={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+increment={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":93,"key_label":0,"unicode":93,"location":0,"echo":false,"script":null)
+]
+}
+reduce={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":91,"key_label":0,"unicode":91,"location":0,"echo":false,"script":null)
 ]
 }

@@ -1,4 +1,6 @@
 res://UI/Camera/scripts
+res://Actors/Plants/PlantParts
+res://Assets/Models/Crate
 res://Actors/Items/Projectiles/Water
 res://Assets/Materials
 res://Actors/Items/Projectiles/Bullet
