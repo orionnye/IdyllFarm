@@ -1,0 +1,14 @@
+# Commands for AI agent
+# Use @ prefix to execute a command (e.g. @ai-commands.sudo /pr)
+# Always verify agent mode before executing
+
+commands {
+    /pr {
+        steps:
+            - git status
+            - review modified files
+            - if main branch: create feature branch
+            - commit changes
+            - push to remote
+    }
+}
