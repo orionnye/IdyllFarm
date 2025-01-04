@@ -3,56 +3,41 @@ using System;
 
 public partial class BasePlant : StaticBody3D
 {
-	[Export] public int depth = 3;
-	[Export] public int complexity = 2;
-	[Export] public int dependantCap = 3;
+	[Export] public int initialComplexity = 2;
 	[Export] public float moistCap = 5;
 	[Export] public float moistness = 0;
-
-	[Export] public Node3D leaf;
-	[Export] public Stem branch;
-	[Export] public PackedScene stemScene;
+	[Export] public Node3D branch;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		stemScene = GD.Load<PackedScene>("res://Actors/Plants/PlantParts/Stem.tscn");
+		if (branch is Stem stem) {
+			stem.Grow();
+		}
 	}
-	// define a function for retrieving the scale and height of the stem
-	// public void Retireve() {
-		
-	// }
-	// define a generation function with a complexity and depth parameters
-
-	// define a growth and reinforcement algorithm, this can start as random
 
 	public void Grow() {
-		GD.Print("growing!");
-		Scale = Scale * 1.1f;
-	}
-	public void Shrink() {
-		GD.Print("shrinking!");
-		Scale = Scale * 0.9f;
-	}
-	public void QueueGrowth(int deep, int complex) {
-		if (branch.getDependantCount() < dependantCap) {
-			branch.recursiveChildGrowth(deep, complex);
+		if (branch is Stem stem) {
+			stem.IncreaseComplexity();
 		}
-		branch.recursiveChildScale();
-		Grow();
+	}
+
+	public void Shrink() {
+		if (branch is Stem stem) {
+			stem.DecreaseComplexity();
+		}
+	}
+
+	public void Reset() {
+		if (branch is Stem stem) {
+			stem.Reset();
+		}
+		moistness = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		if (Input.IsActionJustPressed("trigger")) {
-			// branch.growChild();
-			// Godot.Collections.Array<Node> childStems = branch.getChildStems();
-			// if (childStems.Count > 0) {
-			// 	Stem stemChild = (Stem)childStems[0];
-			// 	stemChild.growChild();
-			// }
-			// Generate tree here
-			branch.recursiveChildGrowth(depth, complexity);
-			branch.recursiveChildScale();
+			Grow();
 		}
 		if (Input.IsActionPressed("increment")) {
 			Grow();
@@ -60,18 +45,20 @@ public partial class BasePlant : StaticBody3D
 		if (Input.IsActionPressed("reduce")) {
 			Shrink();
 		}
+		if (Input.IsActionJustPressed("reset_plant")) {
+			Reset();
+		}
 	}
+
 	public void _on_body_entered(Node body) {
-		// GD.Print("collision class:", body.GetType() == typeof(Bullet));
 		if (body.GetType() == typeof(Water)) {
 			GD.Print("Water COLLISION!!!");
-			// Bullet damager = (Bullet)body;
-			// Water droplet = (Water)body;
 			body._ExitTree();
 			body.QueueFree();
 			moistness += 1;
 			if (moistness > moistCap) {
-				QueueGrowth(depth, complexity);
+				Grow();
+				moistness = 0;
 			}
 		}
 	}
