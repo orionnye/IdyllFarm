@@ -11,4 +11,12 @@ commands {
             - commit changes
             - push to remote
     }
+    /newpr {
+        steps:
+            - git stash
+            - git checkout main
+            - git pull
+            - git stash pop
+            - execute /pr
+    }
 }
