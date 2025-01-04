@@ -10,26 +10,79 @@ IdyllFarm is a farming simulation game that combines modern game development pra
 
 ### Prerequisites
 - Godot 4.3 or later
-- .NET SDK 6.0 or later
+- .NET SDK 6.0 or later (9.0+ recommended)
 - Visual Studio Code (recommended) with C# extensions
+- Homebrew (for macOS users)
 
-### Setup Steps
+### macOS Setup
+1. Install Homebrew if not already installed:
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+2. Install .NET SDK:
+   ```bash
+   brew install dotnet
+   ```
+
+3. Set up .NET environment (add to ~/.zshrc):
+   ```bash
+   export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+   ```
+
+4. Install Godot:
+   ```bash
+   brew install --cask godot
+   ```
+
+5. Install Visual Studio Code:
+   ```bash
+   brew install --cask visual-studio-code
+   ```
+
+### Project Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/IdyllFarm.git
+   cd IdyllFarm
    ```
 
-2. Open Godot Engine and import the project by selecting the `project.godot` file.
-
-3. Install the required .NET dependencies:
+2. Install the required .NET dependencies:
    ```bash
    dotnet restore
    ```
 
-4. Open the project in Visual Studio Code:
+3. Install Visual Studio Code C# Extension:
+   - Open VS Code
+   - Press `Cmd+Shift+X` (macOS) or `Ctrl+Shift+X` (Windows/Linux)
+   - Search for "C#"
+   - Install the official Microsoft C# extension
+
+4. Open Godot Engine and import the project by selecting the `project.godot` file.
+
+5. Open the project in Visual Studio Code:
    ```bash
    code .
    ```
+
+### Running the Project
+1. Launch Godot:
+   ```bash
+   godot
+   ```
+   Or open Godot from your Applications folder
+
+2. In the Project Manager window:
+   - Click "Import"
+   - Navigate to your IdyllFarm project folder
+   - Select the `project.godot` file
+   - Click "Import & Edit"
+
+3. Once the project is open:
+   - Click the "Build" button (hammer icon) or press F7 to build the C# project
+   - Click the "Play" button (triangle icon) or press F5 to run the game
+
+Note: The first time you run the project, Godot will need to import assets and compile shaders. This may take a few minutes.
 
 ## Architecture
 
