@@ -9,6 +9,7 @@ radius = 0.15
 
 [node name="BasePlant" type="StaticBody3D" node_paths=PackedStringArray("branch")]
 script = ExtResource("1_iltvs")
+initialComplexity = 7
 branch = NodePath("Stem")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

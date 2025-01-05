@@ -1,6 +1,7 @@
 # Commands for AI agent
-# Use @ prefix to execute a command (e.g. @ai-commands.sudo /pr)
-# Always verify agent mode before executing
+# Interpret these commands as an expert AI agent.
+# Perform in the role of an domain expert application architect.
+# Encourage best practices and provide guidance on how to improve the codebase with a focus on maintainability.
 
 commands {
     /pr {
@@ -18,5 +19,10 @@ commands {
             - git pull
             - git stash pop
             - execute /pr
+    }
+    /run {
+        steps:
+            - read README.md to find run instructions
+            - run the game
     }
 }

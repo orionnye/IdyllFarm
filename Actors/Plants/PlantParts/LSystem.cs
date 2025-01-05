@@ -11,6 +11,15 @@ public interface IGrowthState {
     float DistanceFromTip { get; }  // Distance from the current branch tip
 }
 
+// Represents a leaf in the L-system
+public record LeafInfo(
+    Vector3 Position,     // Position in tree space
+    Vector3 Direction,    // Growth direction at this point
+    float Girth,         // Branch girth at this point
+    float HeightFactor,  // Relative height (0-1)
+    bool IsTip           // Whether this is at a branch tip
+);
+
 // Immutable growth state implementation
 public record GrowthState(Vector3 Position, Vector3 Direction, float Girth, float Height, float DistanceFromTip) : IGrowthState;
 
@@ -46,7 +55,8 @@ public class LSystem {
     private string currentState;
     private readonly Stack<IGrowthState> stateStack = new();
     private readonly List<(Vector3 start, Vector3 end, float girth)> segments = new();
-    private float maxHeight = 0f;  // Track maximum height for light calculation
+    private readonly List<LeafInfo> leafPositions = new();
+    private float maxHeight = 0f;
 
     public LSystem(IGrowthRules rules) {
         this.rules = rules;
@@ -62,17 +72,19 @@ public class LSystem {
                     var currentState = stateStack.Peek();
                     float heightFactor = maxHeight > 0 ? currentState.Height / maxHeight : 1f;
                     
-                    // No growth below minimum height threshold
+                    // Strict prevention of growth below threshold
                     if (heightFactor < rules.MinHeightGrowthFactor) {
                         nextState += "F";  // Just continue existing branch
                         continue;
                     }
 
                     // Calculate growth probability based on height and distance from tip
+                    // Stronger ramp-up of growth probability with height
+                    float heightBonus = Mathf.Pow((heightFactor - rules.MinHeightGrowthFactor) / (1 - rules.MinHeightGrowthFactor), 2);
                     float tipFactor = Mathf.Max(0f, 1f - currentState.DistanceFromTip);
                     float branchChance = rules.BranchingProbability * 
-                        (0.5f + 0.5f * heightFactor) * // Height factor
-                        (0.3f + 0.7f * tipFactor);     // Tip factor - more growth near tips
+                        heightBonus * // Quadratic height factor for stronger high growth
+                        (0.3f + 0.7f * tipFactor); // Tip factor - more growth near tips
                     
                     if (GD.Randf() < branchChance) {
                         nextState += rules.Productions['F'];
@@ -87,9 +99,12 @@ public class LSystem {
         }
     }
 
+    public List<LeafInfo> GetLeafPositions() => leafPositions;
+
     public List<(Vector3 start, Vector3 end, float girth)> Interpret(float initialLength = 1.0f, float initialGirth = 0.1f) {
         segments.Clear();
         stateStack.Clear();
+        leafPositions.Clear();
         maxHeight = 0f;
         
         var currentPos = Vector3.Zero;
@@ -97,7 +112,6 @@ public class LSystem {
         var currentGirth = initialGirth;
         var length = initialLength;
         
-        // Initialize with root state
         stateStack.Push(new GrowthState(currentPos, currentDir, currentGirth, 0f, 0f));
 
         foreach (char c in currentState) {
@@ -106,15 +120,38 @@ public class LSystem {
             
             switch (c) {
                 case 'F':
-                    // Apply phototropism - bias towards vertical based on height
                     var targetDir = Vector3.Up;
-                    var phototropicDir = currentState.Direction.Lerp(targetDir, rules.PhototropismStrength * heightFactor);
+                    // Stronger phototropism at higher points
+                    float phototropicStrength = rules.PhototropismStrength * Mathf.Pow(heightFactor, 1.5f);
+                    var phototropicDir = currentState.Direction.Lerp(targetDir, phototropicStrength);
                     phototropicDir = phototropicDir.Normalized();
                     
                     var newPos = currentState.Position + phototropicDir * length;
                     segments.Add((currentState.Position, newPos, currentState.Girth));
                     
-                    // Update maximum height and current state
+                    // Only add leaf positions above minimum height
+                    if (heightFactor >= rules.MinHeightGrowthFactor) {
+                        bool isTip = true;
+                        // Look ahead to see if this is actually a tip
+                        for (int i = 1; i < 3 && i < currentState.Length - 1; i++) {
+                            if (currentState[i] == 'F') {
+                                isTip = false;
+                                break;
+                            }
+                        }
+                        
+                        // Add more weight to height in leaf positioning
+                        float adjustedHeightFactor = Mathf.Pow(heightFactor, 1.5f);
+                        
+                        leafPositions.Add(new LeafInfo(
+                            newPos,
+                            phototropicDir,
+                            currentState.Girth,
+                            adjustedHeightFactor,
+                            isTip
+                        ));
+                    }
+                    
                     maxHeight = Mathf.Max(maxHeight, newPos.Y);
                     stateStack.Pop();
                     stateStack.Push(new GrowthState(newPos, phototropicDir, currentState.Girth, newPos.Y, 0f));
