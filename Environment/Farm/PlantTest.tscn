@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwkyaf5pov4yy"]
+
+[ext_resource type="PackedScene" uid="uid://ccmo2txak3hsu" path="res://Environment/Static/Primary/Plane.tscn" id="1_p5maq"]
+[ext_resource type="PackedScene" uid="uid://bugm86q27jcpi" path="res://Actors/Plants/BasePlant/BasePlant.tscn" id="2_8rodv"]
+[ext_resource type="Script" path="res://UI/Camera/scripts/Focus.cs" id="3_8d0vn"]
+
+[node name="PlantTest" type="Node3D"]
+
+[node name="Plane" parent="." instance=ExtResource("1_p5maq")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="DefaultPlant" parent="." instance=ExtResource("2_8rodv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+plantType = "Default"
+
+[node name="DefaultLabel" type="Label3D" parent="DefaultPlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+text = "Default
+Balanced growth pattern
+Medium branching & leaves"
+font_size = 64
+outline_size = 24
+modulate = Color(1, 1, 0, 1)
+double_sided = true
+
+[node name="BushyPlant" parent="." instance=ExtResource("2_8rodv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+plantType = "Bushy"
+
+[node name="BushyLabel" type="Label3D" parent="BushyPlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+text = "Bushy
+High branching & leaves
+Wider angles"
+font_size = 64
+outline_size = 24
+modulate = Color(1, 1, 0, 1)
+double_sided = true
+
+[node name="TallSparsePlant" parent="." instance=ExtResource("2_8rodv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+plantType = "TallSparse"
+
+[node name="TallSparseLabel" type="Label3D" parent="TallSparsePlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+text = "Tall Sparse
+Strong upward growth
+Less branching"
+font_size = 64
+outline_size = 24
+modulate = Color(1, 1, 0, 1)
+double_sided = true
+
+[node name="VinePlant" parent="." instance=ExtResource("2_8rodv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+plantType = "Vine"
+
+[node name="VineLabel" type="Label3D" parent="VinePlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+text = "Vine
+Thin & flexible
+Alternating branches"
+font_size = 64
+outline_size = 24
+modulate = Color(1, 1, 0, 1)
+double_sided = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.849488, -0.0556263, 0.524668, -0.527608, -0.0895624, 0.844753, 0, -0.994427, -0.105431, 3.7917, 2.08181, 0)
+
+[node name="Focus" type="Node3D" parent="."]
+script = ExtResource("3_8d0vn")
+
+[node name="Camera3D" type="Camera3D" parent="Focus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8) 

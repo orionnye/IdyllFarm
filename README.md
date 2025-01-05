@@ -66,7 +66,13 @@ IdyllFarm is a farming simulation game that combines modern game development pra
    ```
 
 ### Running the Project
-1. Launch Godot:
+1. For the best experience, run the game directly in debug mode with Full HD resolution:
+   ```bash
+   /Applications/Godot_mono.app/Contents/MacOS/Godot --verbose
+   --resolution 1920x1080 --debug Environment/Farm/PlantTest.tscn
+   ```
+
+2. Alternatively, launch Godot:
    ```bash
    godot
    ```
