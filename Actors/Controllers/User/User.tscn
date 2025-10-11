@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://3m52ixqp6hgn"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/User/User.cs" id="1_elnjs"]
+[ext_resource type="Script" uid="uid://5t0xratmhv8h" path="res://Actors/Controllers/User/User.cs" id="1_elnjs"]
 [ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_gisbw"]
 [ext_resource type="PackedScene" uid="uid://bcxr77c7xpun5" path="res://Actors/Controllers/Hands/Hands.tscn" id="2_jaxxf"]
 [ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="3_j7w1j"]

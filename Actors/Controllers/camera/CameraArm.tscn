@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://284uludaqm3y"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/camera/CameraArm.cs" id="1_xjlh7"]
+[ext_resource type="Script" uid="uid://de3dbbwaudj4s" path="res://Actors/Controllers/camera/CameraArm.cs" id="1_xjlh7"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_k7y15"]
 [ext_resource type="Material" uid="uid://diqk0fbiavdns" path="res://Assets/Materials/Marker.tres" id="3_i0ymk"]
 

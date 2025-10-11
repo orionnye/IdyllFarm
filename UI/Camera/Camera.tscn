@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cej6uayqdbr6a"]
 
-[ext_resource type="Script" path="res://UI/Camera/scripts/Camera.cs" id="1_30etn"]
+[ext_resource type="Script" uid="uid://bb5tsvmghkqn3" path="res://UI/Camera/scripts/Camera.cs" id="1_30etn"]
 
 [node name="Focus" type="Node3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_30etn")

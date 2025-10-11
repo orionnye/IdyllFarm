@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://drcq0uvmk2sfp"]
 
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="1_5hxfw"]
-[ext_resource type="Script" path="res://Actors/Items/Projectiles/Rock/Rock.cs" id="1_u04r8"]
+[ext_resource type="Script" uid="uid://b7sh5imycblx" path="res://Actors/Items/Projectiles/Rock/Rock.cs" id="1_u04r8"]
 [ext_resource type="Material" uid="uid://dko7ndjjouvgr" path="res://Assets/Materials/Mud.tres" id="2_kns08"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4lg0f"]

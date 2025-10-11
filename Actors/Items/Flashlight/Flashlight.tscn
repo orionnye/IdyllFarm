@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhnolivqlhywo"]
 
-[ext_resource type="Script" path="res://Actors/Items/Flashlight/Flashlight.cs" id="1_0tque"]
+[ext_resource type="Script" uid="uid://b78323y7jafjl" path="res://Actors/Items/Flashlight/Flashlight.cs" id="1_0tque"]
 [ext_resource type="Material" uid="uid://d2pjt7ciw3e4d" path="res://Assets/Materials/Glass.tres" id="1_os5b5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bbc4y"]

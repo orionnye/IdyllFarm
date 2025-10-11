@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d2mowv763o3fq"]
 
-[ext_resource type="Script" path="res://Actors/Items/Spawners/Gun/Gun.cs" id="1_ql61e"]
+[ext_resource type="Script" uid="uid://2wqsrvb030mn" path="res://Actors/Items/Spawners/Gun/Gun.cs" id="1_ql61e"]
 [ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="1_xf40k"]
 [ext_resource type="PackedScene" uid="uid://4oht66u6b6t3" path="res://Actors/Items/Projectiles/Bullet/Bullet.tscn" id="2_cy1cl"]
 [ext_resource type="Material" uid="uid://4r6p42l6b1bv" path="res://Assets/Materials/Red.tres" id="2_jv4i1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bugm86q27jcpi"]
 
-[ext_resource type="Script" path="res://Actors/Plants/BasePlant/BasePlant.cs" id="1_iltvs"]
+[ext_resource type="Script" uid="uid://ct6roatt3gsd6" path="res://Actors/Plants/BasePlant/BasePlant.cs" id="1_iltvs"]
 [ext_resource type="PackedScene" uid="uid://dxke0w02xeh67" path="res://Actors/Plants/PlantParts/Stem.tscn" id="2_bannk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wqptd"]

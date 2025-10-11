@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwucxyfvsyhed"]
+
+[ext_resource type="Script" uid="uid://dmlgl82ub21ys" path="res://Test/MultiItem.cs" id="1_onspc"]
+[ext_resource type="Script" uid="uid://ckonmabke1ls1" path="res://Test/MultiMeshInstance3d.cs" id="2_3ql05"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3llq2"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_6jjbu"]
+transform_format = 1
+instance_count = 10
+mesh = SubResource("BoxMesh_3llq2")
+buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dnsx2"]
+
+[node name="multiItemTest" type="Node3D" node_paths=PackedStringArray("meshSource", "multiMeshInstance")]
+transform = Transform3D(-0.300552, -0.08406, 0.950054, 0.26935, -0.963042, 1.96275e-07, 0.914943, 0.255897, 0.312086, 0, 0, 0)
+script = ExtResource("1_onspc")
+meshSource = NodePath("Source")
+timer = 0.231853
+multiMeshInstance = NodePath("MultiMeshInstance3D")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_6jjbu")
+script = ExtResource("2_3ql05")
+
+[node name="Target" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_dnsx2")
+
+[node name="Source" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3llq2")

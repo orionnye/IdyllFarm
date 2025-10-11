@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dae5ysynsoy4l"]
 
-[ext_resource type="Script" path="res://Actors/Items/Spawners/Spawner/Spawner.cs" id="1_iqq5a"]
+[ext_resource type="Script" uid="uid://y3pustws5uv5" path="res://Actors/Items/Spawners/Spawner/Spawner.cs" id="1_iqq5a"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_ghlja"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfsyp"]

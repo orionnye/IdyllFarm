@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccmo2txak3hsu" path="res://Environment/Static/Primary/Plane.tscn" id="1_p5maq"]
 [ext_resource type="PackedScene" uid="uid://bugm86q27jcpi" path="res://Actors/Plants/BasePlant/BasePlant.tscn" id="2_8rodv"]
-[ext_resource type="Script" path="res://UI/Camera/scripts/Focus.cs" id="3_8d0vn"]
+[ext_resource type="Script" uid="uid://d1infdvs8mm2e" path="res://UI/Camera/scripts/Focus.cs" id="3_8d0vn"]
 
 [node name="Farm" type="Node3D"]
 

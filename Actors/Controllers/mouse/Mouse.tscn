@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b5h0kbnnqcfd4"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/mouse/Mouse.cs" id="1_75m3b"]
+[ext_resource type="Script" uid="uid://dyfqsc0kit5b4" path="res://Actors/Controllers/mouse/Mouse.cs" id="1_75m3b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i22ak"]
 

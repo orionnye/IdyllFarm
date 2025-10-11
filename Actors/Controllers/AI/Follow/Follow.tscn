@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqn6ml1f0v6w2"]
 
 [ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="1_eqrk0"]
-[ext_resource type="Script" path="res://Actors/Controllers/AI/Follow/Follow.cs" id="1_yvey3"]
+[ext_resource type="Script" uid="uid://cxrpagrtqcxof" path="res://Actors/Controllers/AI/Follow/Follow.cs" id="1_yvey3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rk3kq"]
 size = Vector3(0.5, 0.5, 0.5)

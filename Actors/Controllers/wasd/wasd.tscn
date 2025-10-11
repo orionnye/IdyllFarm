@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b17sybn5m6m3a"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
+[ext_resource type="Script" uid="uid://cyix4s0uc1fch" path="res://Actors/Controllers/wasd/wasd.cs" id="1_lxdau"]
 [ext_resource type="PhysicsMaterial" uid="uid://g2bd0ygtkb4d" path="res://Assets/PhysicsMaterials/User.tres" id="1_r83al"]
 [ext_resource type="PackedScene" uid="uid://cur88scnr5imy" path="res://Environment/Particles/Particles.tscn" id="2_6am86"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_b1t85"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqvhhe2lct3wc"]
 
-[ext_resource type="Script" path="res://Actors/Items/Destructible/Crate/Crate.cs" id="1_ano5f"]
+[ext_resource type="Script" uid="uid://gtdxvmn32fn6" path="res://Actors/Items/Destructible/Crate/Crate.cs" id="1_ano5f"]
 [ext_resource type="PackedScene" uid="uid://d2ir81co42grf" path="res://Actors/Items/SingleUse/SingleUse.tscn" id="2_tr0on"]
 [ext_resource type="PackedScene" uid="uid://bqnejd0p0uird" path="res://Actors/Items/Destructible/Crate/Crate.glb" id="2_yli7c"]
 [ext_resource type="PackedScene" uid="uid://yp2fl4pmn7b1" path="res://Environment/Rigid/Debris/CrateWall/CrateWall.tscn" id="4_1bam8"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcxr77c7xpun5"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/Hands/Hands.cs" id="1_koanj"]
+[ext_resource type="Script" uid="uid://kht24ermi375" path="res://Actors/Controllers/Hands/Hands.cs" id="1_koanj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u3ffa"]
 margin = 0.05

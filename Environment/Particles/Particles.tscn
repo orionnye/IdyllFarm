@@ -3,8 +3,7 @@
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="1_yru62"]
 
 [sub_resource type="Curve" id="Curve_aa2us"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -23,8 +22,7 @@ curve_y = SubResource("Curve_ys2wn")
 curve_z = SubResource("Curve_cosue")
 
 [sub_resource type="Curve" id="Curve_j10ig"]
-min_value = -2.0
-max_value = 2.0
+_limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.345324, -1.36), 0.0, 0.0, 0, 0, Vector2(0.870504, -0.848), 0.0, 0.0, 0, 0]
 point_count = 2
 

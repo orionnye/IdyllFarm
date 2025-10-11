@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cc8jvih147yts"]
 
-[ext_resource type="Script" path="res://Actors/Items/Spawners/WateringCan/WateringCan.cs" id="1_2y625"]
+[ext_resource type="Script" uid="uid://i8j78d6cd7be" path="res://Actors/Items/Spawners/WateringCan/WateringCan.cs" id="1_2y625"]
 [ext_resource type="PackedScene" uid="uid://twnn0mcpf3f2" path="res://Actors/Items/Projectiles/Water/Water.tscn" id="2_cliyv"]
 [ext_resource type="Material" uid="uid://d1yvkic5i2utj" path="res://Assets/Materials/GhostUI.tres" id="2_e2dp7"]
 [ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="2_njo1d"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba7yipgdtkduq"]
 
-[ext_resource type="Script" path="res://Actors/Items/OneShot/OneShot.cs" id="1_viv81"]
+[ext_resource type="Script" uid="uid://2h6uxwcwnx8h" path="res://Actors/Items/OneShot/OneShot.cs" id="1_viv81"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yolnk"]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ulkislaev5j"]
+
+[ext_resource type="PackedScene" uid="uid://3m52ixqp6hgn" path="res://Actors/Controllers/User/User.tscn" id="1_gkkyr"]
+[ext_resource type="PackedScene" uid="uid://ccmo2txak3hsu" path="res://Environment/Static/Primary/Plane.tscn" id="2_dftb8"]
+
+[node name="SpeedTest" type="Node3D"]
+
+[node name="User" parent="." instance=ExtResource("1_gkkyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397694, 7.93795, -0.354408)
+
+[node name="Plane" parent="." instance=ExtResource("2_dftb8")]
+transform = Transform3D(20.87, 0, 0, 0, 20.87, 0, 0, 0, 20.87, 0.262127, 1.35837, 0.287294)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84099, 1.9538, -7.6249)
+omni_range = 15.4025

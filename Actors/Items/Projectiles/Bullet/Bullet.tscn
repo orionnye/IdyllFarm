@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://4oht66u6b6t3"]
 
 [ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="1_2msxj"]
-[ext_resource type="Script" path="res://Actors/Items/Projectiles/Bullet/Bullet.cs" id="1_sygaq"]
+[ext_resource type="Script" uid="uid://dte5cqilns3pk" path="res://Actors/Items/Projectiles/Bullet/Bullet.cs" id="1_sygaq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdkod"]
 radius = 0.2

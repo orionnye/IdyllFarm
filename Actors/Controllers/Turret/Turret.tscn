@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://buhw3k5waiqrd"]
 
-[ext_resource type="Script" path="res://Actors/Controllers/Turret/Turret.cs" id="1_pyvip"]
+[ext_resource type="Script" uid="uid://dec8irupjfysj" path="res://Actors/Controllers/Turret/Turret.cs" id="1_pyvip"]
 [ext_resource type="Material" uid="uid://68xqxr4dvflp" path="res://Assets/Materials/Metallish.tres" id="1_qm0c3"]
 [ext_resource type="Material" uid="uid://5uxb4yleppql" path="res://Assets/Materials/GlowGlass.tres" id="2_mole1"]
 [ext_resource type="PackedScene" uid="uid://d2mowv763o3fq" path="res://Actors/Items/Spawners/Gun/Gun.tscn" id="4_8oa47"]
